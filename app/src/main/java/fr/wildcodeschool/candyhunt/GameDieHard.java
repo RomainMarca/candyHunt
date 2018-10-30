@@ -73,7 +73,8 @@ public class GameDieHard {
             int dificulty = levelDificulty(i);
             int nbCandy = numberCandy(i);
             int duration = durationRound(dificulty, 5000, 4000, 3000);
-            int target = PickRandomTarget(ArrayList<>);
+            Candie target = PickRandomTarget(Singleton.getInstance().getAllCandiesStock());
+
 
             rounds.add();
         }

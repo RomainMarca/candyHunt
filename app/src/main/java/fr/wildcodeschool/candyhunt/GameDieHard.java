@@ -61,14 +61,45 @@ public class GameDieHard {
     }
 
     public Candie PickRandomTarget(ArrayList<Candie> candies){
-
         int possibleIndex =  candies.size()-1;
         Random random = new Random();
         int candieIndex = random.nextInt(possibleIndex + 1 - 0) + 0;
 
         return candies.get(candieIndex);
-
-
     }
 
+    public void initRounds(ArrayList rounds, int nbRounds) {
+        for (int i = 1; i <= nbRounds; i++) {
+            int dificulty = levelDificulty(i);
+            int nbCandy = numberCandy(i);
+            int duration = durationRound(dificulty, 5000, 4000, 3000);
+
+
+            rounds.add();
+        }
+    }
+
+    public int levelDificulty(int i) {
+        if (i < 10) {
+            return 0;
+        } else if (i > 10 && i < 20){
+            return 1;
+        } else {
+            return 2;
+        }
+    }
+
+    public int numberCandy(int i) {
+        return i+3;
+    }
+
+    public int durationRound(int dificulty, int duration0, int duration1, int duration2) {
+        if (dificulty == 0) {
+            return duration0;
+        } else if (dificulty == 1) {
+            return duration1;
+        }else {
+            return duration2;
+        }
+    }
 }

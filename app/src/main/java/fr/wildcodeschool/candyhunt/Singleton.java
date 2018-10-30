@@ -7,18 +7,18 @@ import java.util.ArrayList;
 class Singleton {
 
     private static final Singleton ourInstance = new Singleton();
-
+    private final static int NBCANDIESLEVEL1 = 18;
+    private final static int NBCANDIESLEVEL2 = 18;
+    ArrayList<Player> players = new ArrayList();
     private ArrayList<Candie> allCandiesStock = new ArrayList<>();
     private ArrayList<Candie> candiesLevel1 = new ArrayList<>();
     private ArrayList<Candie> candiesLevel2 = new ArrayList<>();
-    private final static int NBCANDIESLEVEL1 = 18;
-    private final static int NBCANDIESLEVEL2 = 18;
+
+    private Singleton() {
+    }
 
     static Singleton getInstance() {
         return ourInstance;
-    }
-
-    private Singleton() {
     }
 
     /*Getters and Setters*/
@@ -47,6 +47,13 @@ class Singleton {
         this.candiesLevel2 = candiesLevel2;
     }
 
+    public ArrayList<Player> getPlayers() {
+        return players;
+    }
+
+    public void setPlayers(ArrayList<Player> players) {
+        this.players = players;
+    }
     /*Methods*/
 
     public void initCandies() {
@@ -55,11 +62,11 @@ class Singleton {
         String resourceName;
         int IdToSet;
 
-        for(int i = 1; i <= NBCANDIESLEVEL1 ; i++) {
-            resourceName = "g"+1+"c"+i;
+        for (int i = 1; i <= NBCANDIESLEVEL1; i++) {
+            resourceName = "g" + 1 + "c" + i;
             IdToSet = getId(resourceName, R.drawable.class);
             candiesLevel1.add(new Candie(IdToSet, 1));
-            resourceName = "g"+2+"c"+i;
+            resourceName = "g" + 2 + "c" + i;
             IdToSet = getId(resourceName, R.drawable.class);
             candiesLevel2.add(new Candie(IdToSet, 2));
         }
@@ -77,11 +84,10 @@ class Singleton {
         }
     }
 
-    public void initGamer() {
-        Player player1 = new Player(0, "player");
+    public void initPlayers() {
+        Player player1 = new Player(0, "player1");
         Player player2 = new Player(0, "player2");
-        ArrayList <Player> gamer = new ArrayList();
-        gamer.add(player1);
-        gamer.add(player2);
+        players.add(player1);
+        players.add(player2);
     }
 }

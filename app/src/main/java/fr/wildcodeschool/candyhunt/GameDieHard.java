@@ -61,8 +61,8 @@ public class GameDieHard {
         });
     }
 
-    public void endRound(){
-        //TODO clear la liste des candies
+    public void endRound() {
+        //TODO clear la liste des candies en cour
     }
 
     public void initRounds(int nbRounds) {

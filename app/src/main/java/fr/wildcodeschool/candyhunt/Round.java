@@ -78,8 +78,6 @@ public class Round {
     //TODO Méthode initiateTousLesBonbons (+ pimper cette méthode pour ajuster la difficulté?).
     //TODO Méthode generateRandomPosition
     //TODO (facultatif or not?) Créer une méthode qui stocke tout un tas de bonbons randoms
-
-
     //TODO Méthode : Générer randomly une position verticale + une position horizontale (nouvelle à chaque fois)
     //TODO Méthode : Affichage des bonbons
     //TODO Méthode : clear

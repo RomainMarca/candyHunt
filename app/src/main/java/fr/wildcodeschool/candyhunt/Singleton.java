@@ -1,6 +1,7 @@
 package fr.wildcodeschool.candyhunt;
 
-class                                                    Singleton {
+class Singleton {
+
     private static final Singleton ourInstance = new Singleton();
 
     static Singleton getInstance() {

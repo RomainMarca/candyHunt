@@ -57,6 +57,9 @@ public class GameDieHard {
                 close.setVisibility(View.INVISIBLE);
 
                 initRounds(nbRounds);
+
+
+
             }
         });
     }

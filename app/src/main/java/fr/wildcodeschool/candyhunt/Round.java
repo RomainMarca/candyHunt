@@ -5,6 +5,8 @@ import android.widget.ImageView;
 import java.util.ArrayList;
 import java.util.Random;
 
+import cn.iwgang.countdownview.CountdownView;
+
 public class Round {
 
     float timerDuration;
@@ -99,6 +101,10 @@ public class Round {
         Random random = new Random();
         int randomNumber = random.nextInt(max + 1 - min) + min;
         return randomNumber;
+    }
+
+    public void LaunchRound(float timerDuration, CountdownView countDownTimer){
+        countDownTimer.start((long)timerDuration);
     }
 
 }

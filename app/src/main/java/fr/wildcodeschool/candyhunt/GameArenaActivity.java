@@ -30,7 +30,7 @@ public class GameArenaActivity extends AppCompatActivity{
         GameDieHard dieHard = new GameDieHard(false,1,players,50);
         dieHard.LaunchGame(rules, close);
 
-        CountdownView countDownTimer = findViewById(R.id.countdown);
-        countDownTimer.start(timeDuration);
+       /* CountdownView countDownTimer = findViewById(R.id.countdown);
+        countDownTimer.start(timeDuration);*/
     }
 }

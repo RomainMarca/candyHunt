@@ -35,7 +35,6 @@
             app:isShowMinute="true"
             app:isShowSecond="true"
             app:isSuffixTextBold="true"
-            app:layout_constraintBottom_right="@+id/guideline2"
             app:suffixGravity="center"
             app:suffixHour="h"
             app:suffixMillisecond="ss"

@@ -55,6 +55,7 @@ public class GameDieHard {
             public void onClick(View v) {
                 rules.setVisibility(View.INVISIBLE);
                 close.setVisibility(View.INVISIBLE);
+
             }
         });
     }
@@ -64,7 +65,6 @@ public class GameDieHard {
             int dificulty = levelDificulty(i);
             int nbCandy = numberCandy(i);
             int duration = durationRound(dificulty, 5000, 4000, 3000);
-
 
             rounds.add();
         }
@@ -93,4 +93,6 @@ public class GameDieHard {
             return duration2;
         }
     }
+
+    
 }

@@ -11,7 +11,7 @@ public class GameDieHard {
     int nbPlayers;
     ArrayList<Player> players = new ArrayList<>();
     int nbRounds;
-    ArrayList<Round> rounds = new ArrayList<>();
+    ArrayList<Round> mRounds = new ArrayList<>();
 
     /*CONSTRUCTOR*/
     public GameDieHard(boolean timer, int nbPlayers, ArrayList<Player> players, int nbRounds) {
@@ -56,8 +56,24 @@ public class GameDieHard {
                 rules.setVisibility(View.INVISIBLE);
                 close.setVisibility(View.INVISIBLE);
 
+                initRounds(nbRounds);
             }
         });
+    }
+
+    public void endRound(){
+        //TODO clear la liste des candies
+    }
+
+    public void initRounds(int nbRounds) {
+        for (int i = 1; i <= nbRounds; i++) {
+            int dificulty = levelDificulty(i);
+            int nbCandy = numberCandy(i);
+            float duration = durationRound(dificulty, 5000, 4000, 3000);
+            Candie target = PickRandomTarget(Singleton.getInstance().getAllCandiesStock());
+            Round round = new Round(duration, nbCandy, target, dificulty);
+            mRounds.add(round);
+        }
     }
 
     public Candie PickRandomTarget(ArrayList<Candie> candies){
@@ -66,17 +82,6 @@ public class GameDieHard {
         int candieIndex = random.nextInt(possibleIndex + 1 - 0) + 0;
 
         return candies.get(candieIndex);
-    }
-
-    public void initRounds(ArrayList rounds, int nbRounds) {
-        for (int i = 1; i <= nbRounds; i++) {
-            int dificulty = levelDificulty(i);
-            int nbCandy = numberCandy(i);
-            int duration = durationRound(dificulty, 5000, 4000, 3000);
-            int target = PickRandomTarget(ArrayList<>);
-
-            rounds.add();
-        }
     }
 
     public int levelDificulty(int i) {
@@ -93,7 +98,7 @@ public class GameDieHard {
         return i+3;
     }
 
-    public int durationRound(int dificulty, int duration0, int duration1, int duration2) {
+    public float durationRound(int dificulty, float duration0, float duration1, float duration2) {
         if (dificulty == 0) {
             return duration0;
         } else if (dificulty == 1) {
@@ -102,6 +107,4 @@ public class GameDieHard {
             return duration2;
         }
     }
-
-    
 }

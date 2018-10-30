@@ -84,7 +84,4 @@ class Singleton {
         gamer.add(player1);
         gamer.add(player2);
     }
-
-
-
 }

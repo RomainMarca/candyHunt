@@ -1,5 +1,7 @@
 package fr.wildcodeschool.candyhunt;
 
+import android.widget.ImageView;
+
 public class Candie {
 
     String candieID;
@@ -8,6 +10,8 @@ public class Candie {
     float speed;
     float horizontalLocation;
     float verticalLocation;
+    int candieDifficulty;
+    ImageView candieImage;
 
     /*CONSTRUCTOR*/
     public Candie(String candieID, float candieDimension, float speed, float horizontalLocation, float verticalLocation) {
@@ -18,7 +22,26 @@ public class Candie {
         this.verticalLocation = verticalLocation;
     }
 
+    public Candie() {
+    }
+
     /*GETTERS AND SETTERS*/
+
+    public int getCandieDifficulty() {
+        return candieDifficulty;
+    }
+
+    public void setCandieDifficulty(int candieDifficulty) {
+        this.candieDifficulty = candieDifficulty;
+    }
+
+    public ImageView getCandieImage() {
+        return candieImage;
+    }
+
+    public void setCandieImage(ImageView candieImage) {
+        this.candieImage = candieImage;
+    }
 
     public String getCandieID() {
         return candieID;

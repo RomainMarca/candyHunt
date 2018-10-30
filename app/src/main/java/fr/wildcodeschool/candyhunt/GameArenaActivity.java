@@ -26,8 +26,8 @@ public class GameArenaActivity extends AppCompatActivity{
 
         GameDieHard dieHard = new GameDieHard(false,1,players,50);
 
-        CountdownView countDownTimer = findViewById(R.id.countdown);
-        countDownTimer.start(timeDuration);
+       /* CountdownView countDownTimer = findViewById(R.id.countdown);
+        countDownTimer.start(timeDuration);*/
 
         final TextView rules = findViewById(R.id.rules);
         final TextView close = findViewById(R.id.close);

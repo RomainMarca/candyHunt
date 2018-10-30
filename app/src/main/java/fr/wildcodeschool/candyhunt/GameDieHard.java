@@ -1,5 +1,8 @@
 package fr.wildcodeschool.candyhunt;
 
+import android.view.View;
+import android.widget.TextView;
+
 import java.util.ArrayList;
 
 public class GameDieHard {
@@ -45,5 +48,15 @@ public class GameDieHard {
 
     //TODO méthode InitiateNewRound
     //TODO méthode InitiateAllRounds
+
+    public void LaunchGame(final TextView rules, final TextView close) {
+        close.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                rules.setVisibility(View.INVISIBLE);
+                close.setVisibility(View.INVISIBLE);
+            }
+        });
+    }
 
 }

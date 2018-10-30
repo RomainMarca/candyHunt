@@ -97,6 +97,8 @@ public class Round {
         return myNewCandie;
     }
 
+
+
     public int generateRandomInteger(int min, int max) {
         Random random = new Random();
         int randomNumber = random.nextInt(max + 1 - min) + min;

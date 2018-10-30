@@ -69,6 +69,8 @@ public class Round {
     //TODO Success (Méthode classique, ou bien mettre en place un listener?)
     //TODO defeat (pareil. Méthode classique, ou bien mettre en place un listener ?)
     //TODO Méthode CLEAR. Delete tous les bonbons et finish le round
+    //TODO Méthode WinRound. Animation victoire + incremente le compteur de vicoire et relance un nouveau round
+    //TODO Méthode LoseRound. Animation defaite + stop le compteur de vicoire et arrete le jeu.
     //TODO Méthode pickARandomTargetCandie
     //TODO Méthode initiateTousLesBonbons (+ pimper cette méthode pour ajuster la difficulté?).
     //TODO Méthode generateRandomPosition

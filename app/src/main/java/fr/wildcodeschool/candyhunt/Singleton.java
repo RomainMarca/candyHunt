@@ -1,5 +1,6 @@
 package fr.wildcodeschool.candyhunt;
 
+
 import java.util.ArrayList;
 
 class Singleton {

@@ -76,4 +76,15 @@ class Singleton {
                     + resourceName + " / " + c, e);
         }
     }
+
+    public void initGamer() {
+        Player player1 = new Player(0, "player");
+        Player player2 = new Player(0, "player2");
+        ArrayList <Player> gamer = new ArrayList();
+        gamer.add(player1);
+        gamer.add(player2);
+    }
+
+
+
 }

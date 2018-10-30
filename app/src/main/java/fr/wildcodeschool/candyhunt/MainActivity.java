@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        Singleton.getInstance().initGamer();
+        Singleton.getInstance().initPlayers();
     }
 
 }

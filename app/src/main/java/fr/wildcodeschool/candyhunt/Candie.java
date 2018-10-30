@@ -4,7 +4,6 @@ import android.widget.ImageView;
 
 public class Candie {
 
-    private String candieID;
     //TODO Imageview direct du bonbon ? Ou bien bitmap ? A décider et à mettre en place
     private float candieDimension;
     private float speed;
@@ -16,7 +15,6 @@ public class Candie {
 
     /*CONSTRUCTOR*/
     public Candie(String candieID, float candieDimension, float speed, float horizontalLocation, float verticalLocation) {
-        this.candieID = candieID;
         this.candieDimension = candieDimension;
         this.speed = speed;
         this.horizontalLocation = horizontalLocation;
@@ -56,14 +54,6 @@ public class Candie {
 
     public void setCandieImage(ImageView candieImage) {
         this.candieImage = candieImage;
-    }
-
-    public String getCandieID() {
-        return candieID;
-    }
-
-    public void setCandieID(String candieID) {
-        this.candieID = candieID;
     }
 
     public float getCandieDimension() {

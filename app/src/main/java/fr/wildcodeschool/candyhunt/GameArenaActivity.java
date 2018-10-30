@@ -7,17 +7,15 @@ import cn.iwgang.countdownview.CountdownView;
 
 public class GameArenaActivity extends AppCompatActivity{
 
-    int timeDuration;
+    int timeDuration=8000;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.game_arena);
+        setContentView(R.layout.game_arena_activity);
 
         CountdownView countDownTimer = findViewById(R.id.countdown);
         countDownTimer.start(timeDuration);
-
-
 
     }
 }

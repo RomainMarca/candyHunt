@@ -23,16 +23,44 @@ class Singleton {
     private Singleton() {
     }
 
+    /*Getters and Setters*/
+
+    public ArrayList<Candie> getAllCandiesStock() {
+        return allCandiesStock;
+    }
+
+    public void setAllCandiesStock(ArrayList<Candie> allCandiesStock) {
+        this.allCandiesStock = allCandiesStock;
+    }
+
+    public ArrayList<Candie> getCandiesLevel1() {
+        return candiesLevel1;
+    }
+
+    public void setCandiesLevel1(ArrayList<Candie> candiesLevel1) {
+        this.candiesLevel1 = candiesLevel1;
+    }
+
+    public ArrayList<Candie> getCandiesLevel2() {
+        return candiesLevel2;
+    }
+
+    public void setCandiesLevel2(ArrayList<Candie> candiesLevel2) {
+        this.candiesLevel2 = candiesLevel2;
+    }
+
+    /*Methods*/
+
     public void initCandies() {
 
         String resourceName;
         int IdToSet;
 
         for(int i = 1; i <= NBCANDIESLEVEL1 ; i++) {
-            resourceName = "G"+1+"C"+i;
+            resourceName = "g"+1+"c"+i;
             IdToSet = getId(resourceName, R.drawable.class);
             candiesLevel1.add(new Candie(IdToSet, 1));
-            resourceName = "G"+2+"C"+i;
+            resourceName = "g"+2+"c"+i;
             IdToSet = getId(resourceName, R.drawable.class);
             candiesLevel2.add(new Candie(IdToSet, 2));
         }

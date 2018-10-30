@@ -50,6 +50,18 @@
             app:timeTextColor="#000"
             tools:ignore="NotSibling" />
 
+        <ImageView
+            android:id="@+id/iv_skull"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:layout_toEndOf="@+id/countdown"
+            android:layout_toRightOf="@+id/countdown"
+            app:srcCompat="@drawable/skull" />
+
     </RelativeLayout>
 
     <android.support.constraint.Guideline

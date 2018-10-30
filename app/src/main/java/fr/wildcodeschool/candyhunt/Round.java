@@ -105,6 +105,12 @@ public class Round {
 
     public void LaunchRound(float timerDuration, CountdownView countDownTimer){
         countDownTimer.start((long)timerDuration);
+
     }
+
+    /*public void reLaunchRound() {
+        //Todo relancer <round +1>
+        countDownTimer.clear;
+    }*/
 
 }

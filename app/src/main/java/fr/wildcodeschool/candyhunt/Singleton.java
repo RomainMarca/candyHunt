@@ -20,6 +20,13 @@ class Singleton {
     }
 
     public void initCandies() {
+        int candieIndex = 1;
+        boolean anotherCandieExist = true;
+        while(anotherCandieExist) {
+
+
+
+        }
 
 
     }

@@ -4,25 +4,43 @@ import android.widget.ImageView;
 
 public class Candie {
 
-    String candieID;
     //TODO Imageview direct du bonbon ? Ou bien bitmap ? A décider et à mettre en place
-    float candieDimension;
-    float speed;
-    float horizontalLocation;
-    float verticalLocation;
-    int candieDifficulty;
-    ImageView candieImage;
+
+    private float candieDimension;
+    private float speed;
+    private float horizontalLocation;
+    private float verticalLocation;
+    private int candieDifficulty;
+    private ImageView candieImage;
+    private int candieResourceId;
 
     /*CONSTRUCTOR*/
     public Candie(String candieID, float candieDimension, float speed, float horizontalLocation, float verticalLocation) {
-        this.candieID = candieID;
         this.candieDimension = candieDimension;
         this.speed = speed;
         this.horizontalLocation = horizontalLocation;
         this.verticalLocation = verticalLocation;
     }
 
+    public Candie(int candieResourceId, int candieDifficulty) {
+        this.candieResourceId = candieResourceId;
+        this.candieDifficulty = candieDifficulty;
+    }
+
+    public Candie() {
+
+    }
+
     /*GETTERS AND SETTERS*/
+
+
+    public int getCandieResourceId() {
+        return candieResourceId;
+    }
+
+    public void setCandieResourceId(int candieResourceId) {
+        this.candieResourceId = candieResourceId;
+    }
 
     public int getCandieDifficulty() {
         return candieDifficulty;
@@ -38,14 +56,6 @@ public class Candie {
 
     public void setCandieImage(ImageView candieImage) {
         this.candieImage = candieImage;
-    }
-
-    public String getCandieID() {
-        return candieID;
-    }
-
-    public void setCandieID(String candieID) {
-        this.candieID = candieID;
     }
 
     public float getCandieDimension() {

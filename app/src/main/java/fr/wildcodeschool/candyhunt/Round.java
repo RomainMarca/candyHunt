@@ -86,9 +86,9 @@ public class Round {
         return candie;
     }*/
 
-    public int generateRandomInteger(int min, int max) {
+    public int generateRandomInteger() {
         Random random = new Random();
-        int randomNumber = random.nextInt(max + 1 - min) + min;
+        int randomNumber = random.nextInt(MAX + 1 - MIN) + MIN;
         return randomNumber;
     }
 

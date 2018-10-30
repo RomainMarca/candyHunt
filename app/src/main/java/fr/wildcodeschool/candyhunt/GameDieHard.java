@@ -45,7 +45,6 @@ public class GameDieHard {
         this.nbRounds = nbRounds;
     }
 
-
     //TODO méthode InitiateNewRound
     //TODO méthode InitiateAllRounds
 

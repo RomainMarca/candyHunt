@@ -1,5 +1,7 @@
 package fr.wildcodeschool.candyhunt;
 
+import android.widget.ImageView;
+
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -7,18 +9,19 @@ public class Round {
 
     float timerDuration;
     int nbCandies;
-    String candieTargetId;
+    //String candieTargetId;
+    Candie candieTarget;
     int candiesDifficulty; //Correspond à la difficulté des bonbons sélectionnés pour ce round
-    ArrayList<Candie> candies = new ArrayList<>();
+    ArrayList<Candie> candiesStock = new ArrayList<>();
 
     final static int MIN = 2;
     final static int MAX = 98;
 
     /*CONSTRUCTOR*/
-    public Round(float timerDuration, int nbCandies, String candieTargetId, int candiesDifficulty) {
+    public Round(float timerDuration, int nbCandies, Candie candieTarget, int candiesDifficulty) {
         this.timerDuration = timerDuration;
         this.nbCandies = nbCandies;
-        this.candieTargetId = candieTargetId;
+        this.candieTarget = candieTarget;
         this.candiesDifficulty = candiesDifficulty;
     }
 
@@ -32,20 +35,20 @@ public class Round {
         this.candiesDifficulty = candiesDifficulty;
     }
 
-    public ArrayList<Candie> getCandies() {
-        return candies;
+    public ArrayList<Candie> getCandiesStock() {
+        return candiesStock;
     }
 
-    public void setCandies(ArrayList<Candie> candies) {
-        this.candies = candies;
+    public void setCandiesStock(ArrayList<Candie> candies) {
+        this.candiesStock = candies;
     }
 
-    public String getCandieTargetId() {
-        return candieTargetId;
+    public Candie getCandieTarget() {
+        return candieTarget;
     }
 
-    public void setCandieTargetId(String candieTargetId) {
-        this.candieTargetId = candieTargetId;
+    public void setCandieTarget(Candie candieTarget) {
+        this.candieTarget = candieTarget;
     }
 
     public float getTimerDuration() {
@@ -76,19 +79,27 @@ public class Round {
     //TODO Méthode generateRandomPosition
     //TODO (facultatif or not?) Créer une méthode qui stocke tout un tas de bonbons randoms
 
-    /*public Candie generateACandie() {
 
-        String candieID, float candieDimension, float speed, float horizontalLocation, float verticalLocation
+    //TODO Méthode : Générer randomly une position verticale + une position horizontale (nouvelle à chaque fois)
+    //TODO Méthode : Affichage des bonbons
+    //TODO Méthode : clear
+    //TODO Méthode : Lancer Round (1 : Clear 2 : Affichage des bonbons)
 
-        Candie candie  new Candie();
 
+    public Candie generateACandie() {
 
-        return candie;
-    }*/
+        int maxIndexCandieToPick = candiesStock.size()-1;
+        int indexCandieToPick = generateRandomInteger(0, maxIndexCandieToPick);
+        Candie myNewCandie = candiesStock.get(indexCandieToPick);
+        myNewCandie.setHorizontalLocation(generateRandomInteger(0, 100));
+        myNewCandie.setVerticalLocation(generateRandomInteger(0, 100));
 
-    public int generateRandomInteger() {
+        return myNewCandie;
+    }
+
+    public int generateRandomInteger(int min, int max) {
         Random random = new Random();
-        int randomNumber = random.nextInt(MAX + 1 - MIN) + MIN;
+        int randomNumber = random.nextInt(max + 1 - min) + min;
         return randomNumber;
     }
 

@@ -24,7 +24,7 @@ public class GameArenaActivity extends AppCompatActivity{
         players.add(player);
 
 
-        GameDieHard dieHard = new GameDieHard(true,1,players,50);
+        GameDieHard dieHard = new GameDieHard(false,1,players,50);
 
         CountdownView countDownTimer = findViewById(R.id.countdown);
         countDownTimer.start(timeDuration);

@@ -56,6 +56,7 @@ public class GameDieHard {
                 rules.setVisibility(View.INVISIBLE);
                 close.setVisibility(View.INVISIBLE);
 
+                initRounds(ArrayList<>);
             }
         });
     }
@@ -72,10 +73,9 @@ public class GameDieHard {
         for (int i = 1; i <= nbRounds; i++) {
             int dificulty = levelDificulty(i);
             int nbCandy = numberCandy(i);
-            int duration = durationRound(dificulty, 5000, 4000, 3000);
+            float duration = durationRound(dificulty, 5000, 4000, 3000);
             Candie target = PickRandomTarget(Singleton.getInstance().getAllCandiesStock());
-
-
+            Round round = new Round(duration, nbCandy, target, dificulty);
             rounds.add();
         }
     }
@@ -94,7 +94,7 @@ public class GameDieHard {
         return i+3;
     }
 
-    public int durationRound(int dificulty, int duration0, int duration1, int duration2) {
+    public float durationRound(int dificulty, float duration0, float duration1, float duration2) {
         if (dificulty == 0) {
             return duration0;
         } else if (dificulty == 1) {
@@ -103,6 +103,4 @@ public class GameDieHard {
             return duration2;
         }
     }
-
-    
 }

@@ -57,9 +57,6 @@ public class GameDieHard {
                 close.setVisibility(View.INVISIBLE);
 
                 initRounds(nbRounds);
-
-
-
             }
         });
     }
@@ -72,7 +69,7 @@ public class GameDieHard {
         for (int i = 1; i <= nbRounds; i++) {
             int dificulty = levelDificulty(i);
             int nbCandy = numberCandy(i);
-            float duration = durationRound(dificulty, 5000, 4000, 3000);
+            float duration = timeDurationRound(dificulty,5000, 4000, 3000);
             Candie target = PickRandomTarget(Singleton.getInstance().getAllCandiesStock());
             Round round = new Round(duration, nbCandy, target, dificulty);
             mRounds.add(round);
@@ -101,13 +98,25 @@ public class GameDieHard {
         return i+3;
     }
 
-    public float durationRound(int dificulty, float duration0, float duration1, float duration2) {
+    public float timeDurationRound(int dificulty, float timeDuration0, float timeDuration1, float timeDuration2) {
         if (dificulty == 0) {
-            return duration0;
+            return timeDuration0;
         } else if (dificulty == 1) {
-            return duration1;
+            return timeDuration1;
         }else {
-            return duration2;
+            return timeDuration2;
         }
     }
+
+    /*public void onResult() {
+        if (click == target) {
+            Player.counter +1
+            reLaunchRound(+1);
+        } else {
+            Player.counter(view);
+            intent mainActivity;
+        }
+    }*/
+
+
 }

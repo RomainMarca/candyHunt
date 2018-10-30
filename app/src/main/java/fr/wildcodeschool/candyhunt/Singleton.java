@@ -1,7 +1,5 @@
 package fr.wildcodeschool.candyhunt;
 
-import android.content.Context;
-import android.widget.ImageView;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
@@ -52,6 +50,7 @@ class Singleton {
     /*Methods*/
 
     public void initCandies() {
+        int candieIndex = 1;
 
         String resourceName;
         int IdToSet;

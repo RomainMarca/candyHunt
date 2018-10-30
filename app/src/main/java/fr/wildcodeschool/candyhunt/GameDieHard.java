@@ -4,6 +4,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 public class GameDieHard {
 
@@ -57,6 +58,17 @@ public class GameDieHard {
                 close.setVisibility(View.INVISIBLE);
             }
         });
+    }
+
+    public Candie PickRandomTarget(ArrayList<Candie> candies){
+
+        int possibleIndex =  candies.size()-1;
+        Random random = new Random();
+        int candieIndex = random.nextInt(possibleIndex + 1 - 0) + 0;
+
+        return candies.get(candieIndex);
+
+
     }
 
 }

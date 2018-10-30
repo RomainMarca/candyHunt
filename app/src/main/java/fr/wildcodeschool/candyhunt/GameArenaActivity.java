@@ -5,7 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 
 import cn.iwgang.countdownview.CountdownView;
 
-public class GameArena extends AppCompatActivity{
+public class GameArenaActivity extends AppCompatActivity{
 
     int timeDuration;
 

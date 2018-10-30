@@ -6,7 +6,6 @@
     android:layout_height="match_parent"
     android:background="@drawable/backgroundfirstgame">
 
-
     <RelativeLayout
         android:layout_width="0dp"
         android:layout_height="0dp"
@@ -35,7 +34,6 @@
             app:isShowMinute="true"
             app:isShowSecond="true"
             app:isSuffixTextBold="true"
-            app:layout_constraintBottom_right="@+id/guideline2"
             app:suffixGravity="center"
             app:suffixHour="h"
             app:suffixMillisecond="ss"

@@ -10,7 +10,7 @@ import cn.iwgang.countdownview.CountdownView;
 
 public class GameArenaActivity extends AppCompatActivity{
 
-    int timeDuration;
+    int timeDuration=8000;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,9 +22,5 @@ public class GameArenaActivity extends AppCompatActivity{
 
         final TextView rules = findViewById(R.id.rules);
         final TextView close = findViewById(R.id.close);
-
-
-
-
     }
 }

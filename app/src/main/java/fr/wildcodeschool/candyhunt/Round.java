@@ -71,9 +71,5 @@ public class Round {
     //TODO Méthode initiateTousLesBonbons (+ pimper cette méthode pour ajuster la difficulté?).
     //TODO Méthode generateRandomPosition
     //TODO (facultatif or not?) Créer une méthode qui stocke tout un tas de bonbons randoms
-
-    public void EndRound(ArrayList candies){
-        candies.clear();
-
-    }
+    
 }

@@ -1,6 +1,7 @@
 package fr.wildcodeschool.candyhunt;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 public class Round {
 
@@ -9,6 +10,9 @@ public class Round {
     String candieTargetId;
     int candiesDifficulty; //Correspond à la difficulté des bonbons sélectionnés pour ce round
     ArrayList<Candie> candies = new ArrayList<>();
+
+    final static int MIN = 2;
+    final static int MAX = 98;
 
     /*CONSTRUCTOR*/
     public Round(float timerDuration, int nbCandies, String candieTargetId, int candiesDifficulty) {
@@ -69,5 +73,21 @@ public class Round {
     //TODO Méthode initiateTousLesBonbons (+ pimper cette méthode pour ajuster la difficulté?).
     //TODO Méthode generateRandomPosition
     //TODO (facultatif or not?) Créer une méthode qui stocke tout un tas de bonbons randoms
+
+    /*public Candie generateACandie() {
+
+        String candieID, float candieDimension, float speed, float horizontalLocation, float verticalLocation
+
+        Candie candie  new Candie();
+
+
+        return candie;
+    }*/
+
+    public int generateRandomInteger(int min, int max) {
+        Random random = new Random();
+        int randomNumber = random.nextInt(max + 1 - min) + min;
+        return randomNumber;
+    }
 
 }

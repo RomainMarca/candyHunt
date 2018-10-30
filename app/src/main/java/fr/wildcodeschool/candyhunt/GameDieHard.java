@@ -1,5 +1,6 @@
 package fr.wildcodeschool.candyhunt;
 
+import android.content.Context;
 import android.view.View;
 import android.widget.TextView;
 
@@ -12,12 +13,14 @@ public class GameDieHard {
     ArrayList<Player> players = new ArrayList<>();
     int nbRounds;
     ArrayList<Round> mRounds = new ArrayList<>();
+    Context context;
 
     /*CONSTRUCTOR*/
-    public GameDieHard(boolean timer, int nbPlayers, ArrayList<Player> players, int nbRounds) {
+    public GameDieHard(boolean timer, int nbPlayers, ArrayList<Player> players, int nbRounds, Context context) {
         this.nbPlayers = nbPlayers;
         this.players = players;
         this.nbRounds = nbRounds;
+        this.context = context;
     }
 
     /*GETTERS AND SETTERS*/
@@ -44,6 +47,14 @@ public class GameDieHard {
 
     public void setNbRounds(int nbRounds) {
         this.nbRounds = nbRounds;
+    }
+
+    public Context getContext() {
+        return context;
+    }
+
+    public void setContext(Context context) {
+        this.context = context;
     }
 
     //TODO méthode InitiateNewRound
@@ -117,6 +128,4 @@ public class GameDieHard {
             intent mainActivity;
         }
     }*/
-
-
 }

@@ -151,7 +151,7 @@ public class Round {
         View rootView = ((Activity)context).getWindow().getDecorView().findViewById(android.R.id.content);
         ConstraintLayout arena =  (ConstraintLayout) rootView.findViewById(R.id.arena);
 
-        for(Candie candie : candiesToInstantiate) {
+        for(final Candie candie : candiesToInstantiate) {
 
             ImageView newCandie = new ImageView(context);
             newCandie.setImageResource(candie.getCandieResourceId());
@@ -171,6 +171,20 @@ public class Round {
             cs.setHorizontalBias(newCandie.getId(), candie.getHorizontalLocation()/100);
             cs.setVerticalBias(newCandie.getId(), candie.getVerticalLocation()/100);
             cs.applyTo(arena);
+
+            final Candie localCandieTarget = this.candieTarget;
+
+            newCandie.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    if(candie.getCandieResourceId() == localCandieTarget.getCandieResourceId() ) {
+                        //TODO Success
+                    } else {
+                        //TODO Fail. Pour l'instant, il ne se passe rien
+                    }
+                }
+            });
 
         }
 

@@ -2,6 +2,7 @@ package fr.wildcodeschool.candyhunt;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.os.CountDownTimer;
 import android.support.constraint.ConstraintLayout;
 import android.support.constraint.ConstraintSet;
@@ -178,14 +179,11 @@ public class Round {
                 public void onClick(View v) {
 
                     if(candie.getCandieResourceId() == localCandieTarget.getCandieResourceId() ) {
-                        //TODO Success
-                        Toast.makeText(context, "BRAVO", Toast.LENGTH_SHORT).show();
-                        //GameArenaActivity.recreat();
-                        Singleton.getInstance().setIndex(+1);
-                        Singleton.getInstance().setIndexList(+1);
+                        success();
 
                     } else {
-                        //TODO Fail. Pour l'instant, il ne se passe rien
+                        defeat();
+
                     }
                 }
             });
@@ -215,8 +213,10 @@ public class Round {
         return randomNumber;
     }
 
-    public void LaunchRound(float timerDuration){
-        //TODO launchRound
+    public void launchRound(){
+        launchTimer();
+        generateCandies();
+        instantiateCandiesInGameArena(candiesToInstantiate);
     }
 
     public void launchTimer() {
@@ -242,6 +242,16 @@ public class Round {
 
     public void defeat() {
         //TODO Il se passe des trucs ici
+        Intent gotoDead = new Intent(context, DeadActivity.class);
+        context.startActivity(gotoDead);
+        Singleton.getInstance().setIndex(0);
+    }
+
+    public void success() {
+        Toast.makeText(context, "BRAVO", Toast.LENGTH_SHORT).show();
+        Singleton.getInstance().setIndex(+1);
+        Activity arenaActivity = (Activity) context;
+        arenaActivity.recreate();
     }
 
     /*public void reLaunchRound() {

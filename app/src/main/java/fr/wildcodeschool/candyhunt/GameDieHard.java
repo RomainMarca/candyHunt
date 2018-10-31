@@ -13,9 +13,7 @@ public class GameDieHard {
     int nbPlayers;
     ArrayList<Player> players = new ArrayList<>();
     int nbRounds;
-    ArrayList<Round> mRounds = new ArrayList<>();
     Context context;
-    int mIndexL = Singleton.getInstance().getIndexList();
 
 
     /*CONSTRUCTOR*/
@@ -65,53 +63,14 @@ public class GameDieHard {
 
     public void LaunchGame() {
 
-                //mRounds.get(Singleton.getInstance().getIndex());
-                initRounds();
+                if (Singleton.getInstance().getIndex() == 0) {
+                    Singleton.getInstance().initRounds(nbRounds, context);
+                }
+
+                Singleton.getInstance().getmRounds().get(Singleton.getInstance().getIndex()).launchRound();
     }
 
-    public void initRounds() {
 
-        for (mIndexL = 0; mIndexL <= nbRounds; mIndexL++) {
-            int dificulty = levelDificulty(mIndexL);
-            int nbCandy = numberCandy(mIndexL);
-            float duration = timeDurationRound(dificulty,5000, 4000, 3000);
-            Candie target = PickRandomTarget(Singleton.getInstance().getAllCandiesStock());
-            Round round = new Round(duration, nbCandy, target, dificulty, context);
-            mRounds.add(round);
-        }
-    }
-
-    public Candie PickRandomTarget(ArrayList<Candie> candies){
-        int possibleIndex =  candies.size()-1;
-        Random random = new Random();
-        int candieIndex = random.nextInt(possibleIndex + 1 - 0) + 0;
-
-        return candies.get(candieIndex);
-    }
-
-    public int levelDificulty(int mIndexL) {
-        if (mIndexL < 10) {
-            return 0;
-        } else if (mIndexL > 10 && mIndexL < 20){
-            return 1;
-        } else {
-            return 2;
-        }
-    }
-
-    public int numberCandy(int mIndexL) {
-        return mIndexL+3;
-    }
-
-    public float timeDurationRound(int dificulty, float timeDuration0, float timeDuration1, float timeDuration2) {
-        if (dificulty == 0) {
-            return timeDuration0;
-        } else if (dificulty == 1) {
-            return timeDuration1;
-        } else {
-            return timeDuration2;
-        }
-    }
 
     /*public void onResult() {
         if (click == target) {

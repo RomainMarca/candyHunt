@@ -12,23 +12,20 @@ import cn.iwgang.countdownview.CountdownView;
 
 public class GameArenaActivity extends AppCompatActivity{
 
-    int timeDuration=8000;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.game_arena_activity);
 
-        ArrayList<Player> players = new ArrayList<>();
+        /*ArrayList<Player> players = new ArrayList<>();
         Player player = new Player(0,"player_one");
-        players.add(player);
+        players.add(player);*/
 
 
-        GameDieHard dieHard = new GameDieHard(false,1,players,50, this);
+        GameDieHard dieHard = new GameDieHard(false,1,Singleton.getInstance().getPlayers(),50, this);
         dieHard.LaunchGame();
 
-        /*CountdownView countDownTimer = findViewById(R.id.countdown);
-        countDownTimer.start(timeDuration);*/
 
         //TODO DEBUG TO DELETE DEBUT
 

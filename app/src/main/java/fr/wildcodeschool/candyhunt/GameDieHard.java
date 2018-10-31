@@ -114,7 +114,7 @@ public class GameDieHard {
             return timeDuration0;
         } else if (dificulty == 1) {
             return timeDuration1;
-        }else {
+        } else {
             return timeDuration2;
         }
     }

@@ -237,8 +237,6 @@ public class Round {
                 defeat();
             }
         }.start();
-
-
     }
 
     public void defeat() {

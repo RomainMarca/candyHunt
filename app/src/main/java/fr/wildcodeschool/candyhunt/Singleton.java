@@ -135,7 +135,7 @@ class Singleton {
         for (int i = 0; i <= nbRounds; i++) {
             int dificulty = levelDificulty(i);
             int nbCandy = numberCandy(i);
-            float duration = timeDurationRound(dificulty,5000, 4000, 3000);
+            float duration = timeDurationRound(dificulty,6000, 5000, 4000);
             Candie target = PickRandomTarget(Singleton.getInstance().getAllCandiesStock());
             Round round = new Round(duration, nbCandy, target, dificulty, context);
             mRounds.add(round);

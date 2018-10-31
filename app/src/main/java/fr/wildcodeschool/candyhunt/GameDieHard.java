@@ -15,17 +15,27 @@ public class GameDieHard {
     ArrayList<Player> players = new ArrayList<>();
     int nbRounds;
     Context context;
+    int difficultyLevel;
 
 
     /*CONSTRUCTOR*/
-    public GameDieHard(boolean timer, int nbPlayers, ArrayList<Player> players, int nbRounds, Context context) {
+    public GameDieHard(boolean timer, int nbPlayers, ArrayList<Player> players, int nbRounds, Context context, int difficultyLevel) {
         this.nbPlayers = nbPlayers;
         this.players = players;
         this.nbRounds = nbRounds;
         this.context = context;
+        this.difficultyLevel = difficultyLevel;
     }
 
     /*GETTERS AND SETTERS*/
+
+    public int getDifficultyLevel() {
+        return difficultyLevel;
+    }
+
+    public void setDifficultyLevel(int difficultyLevel) {
+        this.difficultyLevel = difficultyLevel;
+    }
 
     public int getNbPlayers() {
         return nbPlayers;
@@ -63,10 +73,9 @@ public class GameDieHard {
     //TODO méthode InitiateAllRounds
 
     public void launchGame() {
-        Toast.makeText(context, ""+Singleton.getInstance().getIndex(), Toast.LENGTH_SHORT ).show();
 
                 if (Singleton.getInstance().getIndex() == 0) {
-                    Singleton.getInstance().initRounds(nbRounds, context);
+                    Singleton.getInstance().initRounds(nbRounds, context, difficultyLevel);
                 }
 
                 Singleton.getInstance().getmRounds().get(Singleton.getInstance().getIndex()).launchRound();

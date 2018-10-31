@@ -20,7 +20,7 @@ public class Round {
     float timerDuration;
     int nbCandies;
     Candie candieTarget;
-    int candiesDifficulty; //Correspond à la difficulté des bonbons sélectionnés pour ce round
+    //int candiesDifficulty; //Correspond à la difficulté des bonbons sélectionnés pour ce round
     ArrayList<Candie> candiesStock = new ArrayList<>();
     ArrayList<Candie> candiesToInstantiate = new ArrayList<>();
     Context context;
@@ -34,7 +34,6 @@ public class Round {
         this.timerDuration = timerDuration;
         this.nbCandies = nbCandies;
         this.candieTarget = candieTarget;
-        this.candiesDifficulty = candiesDifficulty;
         this.context = context;
         this.scoreGain = scoreGain;
 
@@ -63,14 +62,6 @@ public class Round {
 
     public void setCandiesToInstantiate(ArrayList<Candie> candiesToInstantiate) {
         this.candiesToInstantiate = candiesToInstantiate;
-    }
-
-    public int getCandiesDifficulty() {
-        return candiesDifficulty;
-    }
-
-    public void setCandiesDifficulty(int candiesDifficulty) {
-        this.candiesDifficulty = candiesDifficulty;
     }
 
     public ArrayList<Candie> getCandiesStock() {
@@ -239,9 +230,22 @@ public class Round {
         Intent gotoDead = new Intent(context, DeadActivity.class);
         Singleton.getInstance().setScore(Singleton.getInstance().getIndex());
 
-        if (Singleton.getInstance().getBestscore() < Singleton.getInstance().getScore()) {
-            Singleton.getInstance().setBestscore(Singleton.getInstance().getScore());
+        if(Singleton.getInstance().getDifficultyLevel() == 0) {
+            if (Singleton.getInstance().getBestscore0() < Singleton.getInstance().getScore()) {
+                Singleton.getInstance().setBestscore0(Singleton.getInstance().getScore());
+            }
+        } else if(Singleton.getInstance().getDifficultyLevel() == 1) {
+            if (Singleton.getInstance().getBestscore1() < Singleton.getInstance().getScore()) {
+                Singleton.getInstance().setBestscore1(Singleton.getInstance().getScore());
+            }
+        } else {
+            if (Singleton.getInstance().getBestscore2() < Singleton.getInstance().getScore()) {
+                Singleton.getInstance().setBestscore2(Singleton.getInstance().getScore());
+            }
         }
+
+
+
 
         Singleton.getInstance().setIndex(0);
         timer.cancel();
@@ -263,7 +267,6 @@ public class Round {
         ConstraintLayout.LayoutParams params = (ConstraintLayout.LayoutParams) targetImage.getLayoutParams();
         params.width = 140;
         targetImage.setImageResource(candieTarget.getCandieResourceId());
-
         }
 
 }

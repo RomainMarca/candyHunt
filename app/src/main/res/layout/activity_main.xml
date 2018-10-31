@@ -26,7 +26,7 @@
         app:srcCompat="@drawable/gosht" />
 
     <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/iv_vamp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -140,11 +140,11 @@
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginBottom="8dp"
-        android:textSize="20sp"
-        android:text="@string/facile"
+        android:text="Eazy Peazy"
+        android:textSize="15sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.61"
+        app:layout_constraintHorizontal_bias="0.63"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.59000003" />
@@ -159,11 +159,11 @@
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginBottom="8dp"
-        android:text="@string/moyen"
-        android:textSize="20sp"
+        android:text="Moy's"
+        android:textSize="15sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.04"
+        app:layout_constraintHorizontal_bias="0.07"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.37" />
@@ -178,11 +178,11 @@
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginBottom="8dp"
-        android:text="@string/difficile"
-        android:textSize="20sp"
+        android:text="Hardcore"
+        android:textSize="15sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.24"
+        app:layout_constraintHorizontal_bias="0.25"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.050000012" />

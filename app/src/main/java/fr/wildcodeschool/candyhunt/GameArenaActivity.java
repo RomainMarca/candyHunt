@@ -1,5 +1,6 @@
 package fr.wildcodeschool.candyhunt;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -19,7 +20,9 @@ public class GameArenaActivity extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.game_arena_activity);
 
-        GameDieHard dieHard = new GameDieHard(false,1,Singleton.getInstance().getPlayers(),50, this);
+        int difficultyLevel = Singleton.getInstance().getDifficultyLevel();
+
+        GameDieHard dieHard = new GameDieHard(false,1,Singleton.getInstance().getPlayers(),50, this, difficultyLevel);
         dieHard.launchGame();
     }
 

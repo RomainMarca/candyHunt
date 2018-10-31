@@ -18,15 +18,13 @@ public class SplashScreenActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
-
-        final MediaPlayer mp = MediaPlayer.create(this, R.raw.porte);
+        
         ImageView logoApp = findViewById(R.id.logo);
         ImageView buttonStart = findViewById(R.id.start);
 
         buttonStart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mp.start();
                 Intent map = new Intent(SplashScreenActivity.this, MainActivity.class);
                 startActivity(map);
             }

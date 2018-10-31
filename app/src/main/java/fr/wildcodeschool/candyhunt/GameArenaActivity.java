@@ -19,18 +19,19 @@ public class GameArenaActivity extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.game_arena_activity);
 
+        final TextView rules = findViewById(R.id.rules);
+        final TextView close = findViewById(R.id.close);
+
         ArrayList<Player> players = new ArrayList<>();
         Player player = new Player(0,"player_one");
         players.add(player);
 
 
-        GameDieHard dieHard = new GameDieHard(false,1,players,50);
+        GameDieHard dieHard = new GameDieHard(false,1,players,50, this);
+        dieHard.LaunchGame(rules, close);
 
         CountdownView countDownTimer = findViewById(R.id.countdown);
         countDownTimer.start(timeDuration);
-
-        final TextView rules = findViewById(R.id.rules);
-        final TextView close = findViewById(R.id.close);
 
         //TODO DEBUG TO DELETE DEBUT
 
@@ -41,5 +42,6 @@ public class GameArenaActivity extends AppCompatActivity{
         round.instantiateCandiesInGameArena(candiesToInstantiate);
 
         //TODO DEBUG TO DELETE FIN
+
     }
 }

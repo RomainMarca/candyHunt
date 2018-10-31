@@ -12,6 +12,8 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.Random;
 
+import cn.iwgang.countdownview.CountdownView;
+
 public class Round {
 
     float timerDuration;
@@ -104,8 +106,6 @@ public class Round {
     //TODO Méthode initiateTousLesBonbons (+ pimper cette méthode pour ajuster la difficulté?).
     //TODO Méthode generateRandomPosition
     //TODO (facultatif or not?) Créer une méthode qui stocke tout un tas de bonbons randoms
-
-
     //TODO Méthode : Générer randomly une position verticale + une position horizontale (nouvelle à chaque fois)
     //TODO Méthode : Affichage des bonbons
     //TODO Méthode : clear
@@ -198,5 +198,15 @@ public class Round {
         int randomNumber = random.nextInt(max + 1 - min) + min;
         return randomNumber;
     }
+
+    public void LaunchRound(float timerDuration, CountdownView countDownTimer){
+        countDownTimer.start((long)timerDuration);
+
+    }
+
+    /*public void reLaunchRound() {
+        //Todo relancer <round +1>
+        countDownTimer.clear;
+    }*/
 
 }

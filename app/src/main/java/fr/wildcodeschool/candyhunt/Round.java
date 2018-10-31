@@ -230,21 +230,20 @@ public class Round {
     public void defeat() {
         Activity arena = (Activity) context;
         Intent gotoDead = new Intent(context, DeadActivity.class);
-        Singleton.getInstance().setIndex(0);
-        timer.cancel();
+        Singleton.getInstance().setScore(Singleton.getInstance().getIndex());
 
-        if(Singleton.getInstance().getPlayers().get(0).getScore() >
-                Singleton.getInstance().getPlayers().get(0).getBestScore()) {
-            Singleton.getInstance().getPlayers().get(0)
-                    .setBestScore(Singleton.getInstance().getPlayers().get(0).getScore());
+        if (Singleton.getInstance().getBestscore() < Singleton.getInstance().getScore()) {
+            Singleton.getInstance().setBestscore(Singleton.getInstance().getScore());
         }
 
+        Singleton.getInstance().setIndex(0);
+        timer.cancel();
         context.startActivity(gotoDead);
         arena.finish();
     }
 
     public void success() {
-        Singleton.getInstance().setIndex(+1);
+        Singleton.getInstance().setIndex(Singleton.getInstance().getIndex() + 1);
         Singleton.getInstance().getPlayers().get(0).addScore(scoreGain);
         Activity arenaActivity = (Activity) context;
         timer.cancel();

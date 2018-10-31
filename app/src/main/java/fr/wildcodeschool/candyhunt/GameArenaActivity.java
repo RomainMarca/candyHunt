@@ -21,7 +21,6 @@ public class GameArenaActivity extends AppCompatActivity{
 
         GameDieHard dieHard = new GameDieHard(false,1,Singleton.getInstance().getPlayers(),50, this);
         dieHard.launchGame();
-        Toast.makeText(getApplicationContext(), "Création Arène", Toast.LENGTH_SHORT).show();
     }
 
     @Override

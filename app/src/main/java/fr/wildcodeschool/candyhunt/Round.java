@@ -7,10 +7,12 @@ import android.os.CountDownTimer;
 import android.support.constraint.ConstraintLayout;
 import android.support.constraint.ConstraintSet;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Random;
 
 public class Round {
@@ -105,16 +107,28 @@ public class Round {
 
     public void generateCandies() {
 
+        ArrayList<Candie> candiesClone = (ArrayList<Candie>) this.candiesStock.clone();
+        candiesClone.remove(this.candieTarget);
+        Collections.shuffle(candiesClone);
+
+
         this.candieTarget.setHorizontalLocation(generateRandomInteger(4, 96));
         this.candieTarget.setVerticalLocation(generateRandomInteger(4, 96));
+
         this.candiesToInstantiate.add(this.candieTarget);
         Candie newCandie;
 
-        for(int i = 0 ; i < this.nbCandies - 1 ; i ++) {
-            do {
-                newCandie = generateACandie();
-            } while (newCandie.getCandieResourceId() == candieTarget.getCandieResourceId() || positionIsAlreadyUsed(this.candiesToInstantiate, newCandie));
-        this.candiesToInstantiate.add(generateACandie());
+        for(int i = 0 ; i < Math.min(this.nbCandies , candiesClone.size()) - 1; i ++) {
+
+            newCandie = candiesClone.get(i);
+            newCandie = randomPositionCandie(newCandie);
+            int j = 30;
+
+            while (positionIsAlreadyUsed(this.candiesToInstantiate, newCandie) && j > 0) {
+                newCandie = randomPositionCandie(newCandie);
+                j--;
+            }
+            this.candiesToInstantiate.add(newCandie);
         }
     }
 
@@ -122,12 +136,8 @@ public class Round {
 
         for(Candie candieToCheck : candiesToCheck) {
 
-            boolean xIsTooClose = Math.abs(candieToCheck.getHorizontalLocation()-newCandie.getHorizontalLocation()) < 20;
-            boolean yIsTooClose = Math.abs(candieToCheck.getVerticalLocation()-newCandie.getVerticalLocation()) < 20;
-            float distanceFromX = Math.abs(candieToCheck.getHorizontalLocation()-newCandie.getHorizontalLocation());
-            float distanceFromY = Math.abs(candieToCheck.getVerticalLocation()-newCandie.getVerticalLocation());
-            int distanceFromXint = (int) distanceFromX;
-            int distanceFromYint = (int) distanceFromY;
+            boolean xIsTooClose = Math.abs(candieToCheck.getHorizontalLocation()-newCandie.getHorizontalLocation()) < 20f;
+            boolean yIsTooClose = Math.abs(candieToCheck.getVerticalLocation()-newCandie.getVerticalLocation()) < 20f;
 
             if(xIsTooClose && yIsTooClose) {
                 return true;
@@ -186,11 +196,8 @@ public class Round {
         return (int) px;
     }
 
-    public Candie generateACandie() {
+    public Candie randomPositionCandie(Candie myNewCandie) {
 
-        int maxIndexCandieToPick = this.candiesStock.size()-1;
-        int indexCandieToPick = generateRandomInteger(0, maxIndexCandieToPick); //TODO Rajouter ici une vérification (pas de position double). Une méthode basique et une boucle while feront l'affaire
-        Candie myNewCandie = this.candiesStock.get(indexCandieToPick);
         myNewCandie.setHorizontalLocation(generateRandomInteger(0, 100));
         myNewCandie.setVerticalLocation(generateRandomInteger(0, 100));
 
@@ -243,7 +250,7 @@ public class Round {
     }
 
     public void success() {
-        Singleton.getInstance().setIndex(Singleton.getInstance().getIndex() + 1);
+        Singleton.getInstance().incrementIndex(1);
         Singleton.getInstance().getPlayers().get(0).addScore(scoreGain);
         Activity arenaActivity = (Activity) context;
         timer.cancel();

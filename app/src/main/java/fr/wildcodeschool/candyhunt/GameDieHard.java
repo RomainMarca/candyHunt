@@ -63,11 +63,9 @@ public class GameDieHard {
     //TODO méthode InitiateAllRounds
 
     public void launchGame() {
-
-        Toast.makeText(context, "Nouvelle partie", Toast.LENGTH_SHORT).show();
+        Toast.makeText(context, ""+Singleton.getInstance().getIndex(), Toast.LENGTH_SHORT ).show();
 
                 if (Singleton.getInstance().getIndex() == 0) {
-                    Toast.makeText(context, "Nouvelle liste", Toast.LENGTH_SHORT).show();
                     Singleton.getInstance().initRounds(nbRounds, context);
                 }
 

@@ -61,7 +61,7 @@ public class GameDieHard {
     //TODO méthode InitiateNewRound
     //TODO méthode InitiateAllRounds
 
-    public void LaunchGame() {
+    public void launchGame() {
 
                 if (Singleton.getInstance().getIndex() == 0) {
                     Singleton.getInstance().initRounds(nbRounds, context);
@@ -70,15 +70,4 @@ public class GameDieHard {
                 Singleton.getInstance().getmRounds().get(Singleton.getInstance().getIndex()).launchRound();
     }
 
-
-
-    /*public void onResult() {
-        if (click == target) {
-            Player.counter +1
-            reLaunchRound(+1);
-        } else {
-            Player.counter(view);
-            intent mainActivity;
-        }
-    }*/
 }

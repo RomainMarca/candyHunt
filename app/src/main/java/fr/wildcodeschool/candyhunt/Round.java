@@ -26,18 +26,20 @@ public class Round {
     ArrayList<Candie> candiesStock = new ArrayList<>();
     ArrayList<Candie> candiesToInstantiate = new ArrayList<>();
     Context context;
+    int scoreGain;
     //CountdownView countDownTimer;
 
     final static int MIN = 2;
     final static int MAX = 98;
 
     /*CONSTRUCTOR*/
-    public Round(float timerDuration, int nbCandies, Candie candieTarget, int candiesDifficulty, Context context) {
+    public Round(float timerDuration, int nbCandies, Candie candieTarget, int candiesDifficulty, Context context, int scoreGain) {
         this.timerDuration = timerDuration;
         this.nbCandies = nbCandies;
         this.candieTarget = candieTarget;
         this.candiesDifficulty = candiesDifficulty;
         this.context = context;
+        this.scoreGain = scoreGain;
 
         if(candiesDifficulty == 0) {
             this.candiesStock = Singleton.getInstance().getCandiesLevel1();
@@ -49,6 +51,14 @@ public class Round {
     }
 
     /*GETTERS AND SETTERS*/
+
+    public int getScoreGain() {
+        return scoreGain;
+    }
+
+    public void setScoreGain(int scoreGain) {
+        this.scoreGain = scoreGain;
+    }
 
     public ArrayList<Candie> getCandiesToInstantiate() {
         return candiesToInstantiate;

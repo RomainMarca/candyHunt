@@ -32,4 +32,6 @@ public class MainActivity extends AppCompatActivity {
         Singleton.getInstance().initPlayers();
     }
 
+    //TODO Empêcher le OnBackPressed
+
 }

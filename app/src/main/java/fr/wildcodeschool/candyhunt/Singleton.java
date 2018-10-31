@@ -20,13 +20,18 @@ class Singleton {
     private ArrayList<Round> mRounds = new ArrayList<>();
     private int index;
     private int score;
-    private int bestscore;
+    private int bestscore0;
+    private int bestscore1;
+    private int bestscore2;
+
+    private int difficultyLevel;
 
 
     private Singleton() {
 
         index = 0;
         score = 0;
+        difficultyLevel = 0;
     }
 
     static Singleton getInstance() {
@@ -35,12 +40,36 @@ class Singleton {
 
     /*Getters and Setters*/
 
-    public int getBestscore() {
-        return bestscore;
+    public int getDifficultyLevel() {
+        return difficultyLevel;
     }
 
-    public void setBestscore(int bestscore) {
-        this.bestscore = bestscore;
+    public void setDifficultyLevel(int difficultyLevel) {
+        this.difficultyLevel = difficultyLevel;
+    }
+
+    public int getBestscore0() {
+        return bestscore0;
+    }
+
+    public void setBestscore0(int bestscore0) {
+        this.bestscore0 = bestscore0;
+    }
+
+    public int getBestscore1() {
+        return bestscore1;
+    }
+
+    public void setBestscore1(int bestscore1) {
+        this.bestscore1 = bestscore1;
+    }
+
+    public int getBestscore2() {
+        return bestscore2;
+    }
+
+    public void setBestscore2(int bestscore2) {
+        this.bestscore2 = bestscore2;
     }
 
     public int getScore() {

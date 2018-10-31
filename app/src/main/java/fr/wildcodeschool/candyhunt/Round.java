@@ -230,9 +230,22 @@ public class Round {
         Intent gotoDead = new Intent(context, DeadActivity.class);
         Singleton.getInstance().setScore(Singleton.getInstance().getIndex());
 
-        if (Singleton.getInstance().getBestscore() < Singleton.getInstance().getScore()) {
-            Singleton.getInstance().setBestscore(Singleton.getInstance().getScore());
+        if(Singleton.getInstance().getDifficultyLevel() == 0) {
+            if (Singleton.getInstance().getBestscore0() < Singleton.getInstance().getScore()) {
+                Singleton.getInstance().setBestscore0(Singleton.getInstance().getScore());
+            }
+        } else if(Singleton.getInstance().getDifficultyLevel() == 1) {
+            if (Singleton.getInstance().getBestscore1() < Singleton.getInstance().getScore()) {
+                Singleton.getInstance().setBestscore1(Singleton.getInstance().getScore());
+            }
+        } else {
+            if (Singleton.getInstance().getBestscore2() < Singleton.getInstance().getScore()) {
+                Singleton.getInstance().setBestscore2(Singleton.getInstance().getScore());
+            }
         }
+
+
+
 
         Singleton.getInstance().setIndex(0);
         timer.cancel();

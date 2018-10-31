@@ -22,16 +22,34 @@ public class MainActivity extends AppCompatActivity {
         Singleton.getInstance().initPlayers();
 
         ImageView gosht = findViewById(R.id.iv_g);
+        ImageView vamp = findViewById(R.id.iv_vamp);
+        ImageView witch = findViewById(R.id.iv_witch);
 
         gosht.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent goToRules = new Intent(MainActivity.this , RulesActivity.class);
+                Singleton.getInstance().setDifficultyLevel(0);
+                startActivity(goToRules);
+            }
+        });
+
+        vamp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent goToRules = new Intent(MainActivity.this , RulesActivity.class);
+                Singleton.getInstance().setDifficultyLevel(2);
+                MainActivity.this.startActivity(goToRules);
+            }
+        });
+
+        witch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent goToRules = new Intent(MainActivity.this , RulesActivity.class);
+                Singleton.getInstance().setDifficultyLevel(1);
                 MainActivity.this.startActivity(goToRules);
             }
         });
     }
-
-    //TODO Changer texte des règles
-    //TODO régler problème retour liste
 }

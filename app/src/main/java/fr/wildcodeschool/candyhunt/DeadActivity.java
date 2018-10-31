@@ -18,11 +18,16 @@ public class DeadActivity extends AppCompatActivity {
         TextView score = findViewById(R.id.score);
         TextView bestScore = findViewById(R.id.best_score);
         Button buttonAgain = findViewById(R.id.button_again);
-
         score.setText("Votre score :" + Singleton.getInstance().getScore());
-        bestScore.setText("Meilleur score :" + Singleton.getInstance().getBestscore());
 
-        buttonAgain.setOnClickListener(new View.OnClickListener() {
+        if(Singleton.getInstance().getDifficultyLevel() == 0) {
+            bestScore.setText("Meilleur score :" + Singleton.getInstance().getBestscore0());
+        } else if (Singleton.getInstance().getDifficultyLevel() == 1) {
+            bestScore.setText("Meilleur score :" + Singleton.getInstance().getBestscore1());
+        } else {
+            bestScore.setText("Meilleur score :" + Singleton.getInstance().getBestscore2());
+        }
+            buttonAgain.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 /*Activity arenaActivity = (Activity) Main;

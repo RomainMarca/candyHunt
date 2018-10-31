@@ -2,6 +2,7 @@ package fr.wildcodeschool.candyhunt;
 
 import android.app.Activity;
 import android.content.Context;
+import android.media.MediaPlayer;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -16,6 +17,7 @@ public class GameDieHard {
     int nbRounds;
     Context context;
     int difficultyLevel;
+
 
 
     /*CONSTRUCTOR*/
@@ -73,7 +75,6 @@ public class GameDieHard {
     //TODO méthode InitiateAllRounds
 
     public void launchGame() {
-
                 if (Singleton.getInstance().getIndex() == 0) {
                     Singleton.getInstance().initRounds(nbRounds, context, difficultyLevel);
                 }

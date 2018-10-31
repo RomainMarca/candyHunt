@@ -268,5 +268,4 @@ public class Round {
         params.width = 140;
         targetImage.setImageResource(candieTarget.getCandieResourceId());
         }
-
 }

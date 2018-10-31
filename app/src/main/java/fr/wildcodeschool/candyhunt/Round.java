@@ -2,11 +2,13 @@ package fr.wildcodeschool.candyhunt;
 
 import android.app.Activity;
 import android.content.Context;
+import android.os.CountDownTimer;
 import android.support.constraint.ConstraintLayout;
 import android.support.constraint.ConstraintSet;
 import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -23,10 +25,10 @@ public class Round {
     ArrayList<Candie> candiesStock = new ArrayList<>();
     ArrayList<Candie> candiesToInstantiate = new ArrayList<>();
     Context context;
+    //CountdownView countDownTimer;
 
     final static int MIN = 2;
     final static int MAX = 98;
-    //final static float CANDIES_DIMENSIONS = 100;
 
     /*CONSTRUCTOR*/
     public Round(float timerDuration, int nbCandies, Candie candieTarget, int candiesDifficulty, Context context) {
@@ -95,7 +97,6 @@ public class Round {
         this.nbCandies = nbCandies;
     }
 
-
     //TODO Méthode pour gérer le Timer
     //TODO Success (Méthode classique, ou bien mettre en place un listener?)
     //TODO defeat (pareil. Méthode classique, ou bien mettre en place un listener ?)
@@ -136,10 +137,8 @@ public class Round {
             float distanceFromY = Math.abs(candieToCheck.getVerticalLocation()-newCandie.getVerticalLocation());
             int distanceFromXint = (int) distanceFromX;
             int distanceFromYint = (int) distanceFromY;
-            Toast.makeText(context, "x is too close : " + xIsTooClose + "   y is too close : " + yIsTooClose , Toast.LENGTH_SHORT).show();
 
             if(xIsTooClose && yIsTooClose) {
-                //Toast.makeText(context, "true", Toast.LENGTH_SHORT).show();
                 return true;
             }
         }
@@ -185,9 +184,7 @@ public class Round {
                     }
                 }
             });
-
         }
-
     }
 
     public int convertDpToPixel(float dp) {
@@ -213,9 +210,33 @@ public class Round {
         return randomNumber;
     }
 
-    public void LaunchRound(float timerDuration, CountdownView countDownTimer){
-        countDownTimer.start((long)timerDuration);
+    public void LaunchRound(float timerDuration){
+        //TODO launchRound
+    }
 
+    public void launchTimer() {
+
+        View rootView = ((Activity)context).getWindow().getDecorView().findViewById(android.R.id.content);
+        final TextView mTextField =  (TextView) rootView.findViewById(R.id.timer);
+
+        new CountDownTimer((long) timerDuration, 1000) {
+
+            public void onTick(long millisUntilFinished) {
+                mTextField.setText(millisUntilFinished / 1000 + " s.");
+                //here you can have your logic to set text to edittext
+            }
+
+            public void onFinish() {
+                mTextField.setText("Perdu !");
+                defeat();
+            }
+        }.start();
+
+
+    }
+
+    public void defeat() {
+        //TODO Il se passe des trucs ici
     }
 
     /*public void reLaunchRound() {

@@ -10,12 +10,8 @@ import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
-
 import java.util.ArrayList;
 import java.util.Random;
-
-import cn.iwgang.countdownview.CountdownView;
 
 public class Round {
 
@@ -27,8 +23,7 @@ public class Round {
     ArrayList<Candie> candiesToInstantiate = new ArrayList<>();
     Context context;
     int scoreGain;
-    //CountdownView countDownTimer;
-
+    CountDownTimer timer;
     final static int MIN = 2;
     final static int MAX = 98;
 
@@ -219,40 +214,42 @@ public class Round {
         View rootView = ((Activity)context).getWindow().getDecorView().findViewById(android.R.id.content);
         final TextView mTextField =  (TextView) rootView.findViewById(R.id.timer);
 
-        new CountDownTimer((long) timerDuration, 1000) {
+        timer = new CountDownTimer((long) timerDuration, 1000) {
 
             public void onTick(long millisUntilFinished) {
                 mTextField.setText(millisUntilFinished / 1000 + " s.");
-                //here you can have your logic to set text to edittext
             }
 
             public void onFinish() {
-                mTextField.setText("Perdu !");
                 defeat();
             }
         }.start();
-
-
     }
 
     public void defeat() {
+        Activity arena = (Activity) context;
         Intent gotoDead = new Intent(context, DeadActivity.class);
         Singleton.getInstance().setIndex(0);
+        timer.cancel();
+
         if(Singleton.getInstance().getPlayers().get(0).getScore() >
                 Singleton.getInstance().getPlayers().get(0).getBestScore()) {
             Singleton.getInstance().getPlayers().get(0)
                     .setBestScore(Singleton.getInstance().getPlayers().get(0).getScore());
         }
+
         context.startActivity(gotoDead);
+        arena.finish();
     }
 
     public void success() {
-        Toast.makeText(context, "BRAVO", Toast.LENGTH_SHORT).show();
         Singleton.getInstance().setIndex(+1);
         Singleton.getInstance().getPlayers().get(0).addScore(scoreGain);
         Activity arenaActivity = (Activity) context;
+        timer.cancel();
         arenaActivity.recreate();
     }
+
     public void imageTargetCandie(){
         View rootView = ((Activity)context).getWindow().getDecorView().findViewById(android.R.id.content);
         ImageView targetImage =  (ImageView) rootView.findViewById(R.id.target);

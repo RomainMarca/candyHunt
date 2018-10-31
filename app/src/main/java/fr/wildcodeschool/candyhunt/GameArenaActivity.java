@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -20,7 +21,7 @@ public class GameArenaActivity extends AppCompatActivity{
 
         GameDieHard dieHard = new GameDieHard(false,1,Singleton.getInstance().getPlayers(),50, this);
         dieHard.launchGame();
-
+        Toast.makeText(getApplicationContext(), "Création Arène", Toast.LENGTH_SHORT).show();
     }
 
     @Override

@@ -28,10 +28,8 @@ public class MainActivity extends AppCompatActivity {
                 MainActivity.this.startActivity(goToRules);
             }
         });
-
-        Singleton.getInstance().initPlayers();
     }
 
-    //TODO Empêcher le OnBackPressed
-
+    //TODO Changer texte des règles
+    //TODO régler problème retour liste
 }

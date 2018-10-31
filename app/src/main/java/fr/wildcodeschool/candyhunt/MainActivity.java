@@ -5,6 +5,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -19,9 +21,9 @@ public class MainActivity extends AppCompatActivity {
         Singleton.getInstance().initCandies();
         Singleton.getInstance().initPlayers();
 
-        Button button = findViewById(R.id.button_intent);
+        ImageView gosht = findViewById(R.id.iv_g);
 
-        button.setOnClickListener(new View.OnClickListener() {
+        gosht.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent goToRules = new Intent(MainActivity.this , RulesActivity.class);

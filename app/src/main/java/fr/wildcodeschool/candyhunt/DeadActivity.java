@@ -28,10 +28,21 @@ public class DeadActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        TextView retour = findViewById(R.id.close);
+        retour.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent goToMenu = new Intent(DeadActivity.this , MainActivity.class);
+                DeadActivity.this.startActivity(goToMenu);
+            }
+        });
     }
 
     @Override
     public void onBackPressed() {
         //Polymorphisme. Vide la méthode onBackPressed pour empêcher son utilisation pendant la partie
+
+
     }
 }

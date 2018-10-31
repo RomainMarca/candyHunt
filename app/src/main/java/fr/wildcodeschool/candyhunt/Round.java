@@ -204,6 +204,7 @@ public class Round {
     }
 
     public void launchRound(){
+        imageTargetCandie();
         launchTimer();
         generateCandies();
         instantiateCandiesInGameArena(candiesToInstantiate);
@@ -249,10 +250,11 @@ public class Round {
         timer.cancel();
         arenaActivity.recreate();
     }
-
     public void imageTargetCandie(){
         View rootView = ((Activity)context).getWindow().getDecorView().findViewById(android.R.id.content);
-        ImageView targetImage =  (ImageView) rootView.findViewById(R.id.target);
+        ImageView targetImage = (ImageView) rootView.findViewById(R.id.target);
+        ConstraintLayout.LayoutParams params = (ConstraintLayout.LayoutParams) targetImage.getLayoutParams();
+        params.width = 140;
         targetImage.setImageResource(candieTarget.getCandieResourceId());
 
         }

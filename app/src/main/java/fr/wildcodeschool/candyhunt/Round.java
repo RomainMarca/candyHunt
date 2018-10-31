@@ -97,21 +97,6 @@ public class Round {
         this.nbCandies = nbCandies;
     }
 
-    //TODO Méthode pour gérer le Timer
-    //TODO Success (Méthode classique, ou bien mettre en place un listener?)
-    //TODO defeat (pareil. Méthode classique, ou bien mettre en place un listener ?)
-    //TODO Méthode CLEAR. Delete tous les bonbons et finish le round
-    //TODO Méthode WinRound. Animation victoire + incremente le compteur de vicoire et relance un nouveau round
-    //TODO Méthode LoseRound. Animation defaite + stop le compteur de vicoire et arrete le jeu.
-    //TODO Méthode pickARandomTargetCandie
-    //TODO Méthode initiateTousLesBonbons (+ pimper cette méthode pour ajuster la difficulté?).
-    //TODO Méthode generateRandomPosition
-    //TODO (facultatif or not?) Créer une méthode qui stocke tout un tas de bonbons randoms
-    //TODO Méthode : Générer randomly une position verticale + une position horizontale (nouvelle à chaque fois)
-    //TODO Méthode : Affichage des bonbons
-    //TODO Méthode : clear
-    //TODO Méthode : Lancer Round (1 : Clear 2 : Affichage des bonbons)
-
     public void generateCandies() {
 
         this.candieTarget.setHorizontalLocation(generateRandomInteger(4, 96));
@@ -248,5 +233,8 @@ public class Round {
         //Todo relancer <round +1>
         countDownTimer.clear;
     }*/
+
+    //TODO Affichage de la target
+
 
 }

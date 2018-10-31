@@ -76,4 +76,16 @@ class Singleton {
                     + resourceName + " / " + c, e);
         }
     }
+
+    public Candie getCandieById(int candieId) {
+        ArrayList<Candie> candies = Singleton.getInstance().getAllCandiesStock();
+        for (Candie candie : candies) {
+            if(candie.getCandieResourceId() == candieId) {
+                return candie;
+            }
+        }
+        //If none target candie encountered
+        Candie candie = Singleton.getInstance().getAllCandiesStock().get(0);
+        return candie;
+    }
 }

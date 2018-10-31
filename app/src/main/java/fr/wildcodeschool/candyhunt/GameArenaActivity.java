@@ -31,5 +31,15 @@ public class GameArenaActivity extends AppCompatActivity{
 
         final TextView rules = findViewById(R.id.rules);
         final TextView close = findViewById(R.id.close);
+
+        //TODO DEBUG TO DELETE DEBUT
+
+        Candie candieTargetTest = Singleton.getInstance().getAllCandiesStock().get(0);
+        Round round = new Round(6000, 10, candieTargetTest, 2, GameArenaActivity.this);
+        round.generateCandies();
+        ArrayList<Candie> candiesToInstantiate = Singleton.getInstance().getAllCandiesStock();
+        round.instantiateCandiesInGameArena(candiesToInstantiate);
+
+        //TODO DEBUG TO DELETE FIN
     }
 }

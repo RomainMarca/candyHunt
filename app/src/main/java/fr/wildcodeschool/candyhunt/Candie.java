@@ -6,7 +6,7 @@ public class Candie {
 
     //TODO Imageview direct du bonbon ? Ou bien bitmap ? A décider et à mettre en place
 
-    private float candieDimension = 10f;
+    private float candieDimension = 50f;
     private float speed = 0f;
     private float horizontalLocation;
     private float verticalLocation;

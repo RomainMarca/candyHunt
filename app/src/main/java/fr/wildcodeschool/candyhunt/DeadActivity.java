@@ -1,5 +1,6 @@
 package fr.wildcodeschool.candyhunt;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -24,6 +25,8 @@ public class DeadActivity extends AppCompatActivity {
         buttonAgain.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                /*Activity arenaActivity = (Activity) Main;
+                arenaActivity.recreate();*/
             Intent intent = new Intent(DeadActivity.this, GameArenaActivity.class);
                 startActivity(intent);
             }

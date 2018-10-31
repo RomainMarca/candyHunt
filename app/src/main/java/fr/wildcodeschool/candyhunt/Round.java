@@ -250,6 +250,7 @@ public class Round {
         timer.cancel();
         arenaActivity.recreate();
     }
+
     public void imageTargetCandie(){
         View rootView = ((Activity)context).getWindow().getDecorView().findViewById(android.R.id.content);
         ImageView targetImage = (ImageView) rootView.findViewById(R.id.target);

@@ -1,5 +1,6 @@
 package fr.wildcodeschool.candyhunt;
 
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;

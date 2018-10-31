@@ -263,7 +263,5 @@ public class Round {
         ConstraintLayout.LayoutParams params = (ConstraintLayout.LayoutParams) targetImage.getLayoutParams();
         params.width = 140;
         targetImage.setImageResource(candieTarget.getCandieResourceId());
-
         }
-
 }

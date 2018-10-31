@@ -1,6 +1,7 @@
 package fr.wildcodeschool.candyhunt;
 
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -22,6 +23,8 @@ public class MainActivity extends AppCompatActivity {
         Singleton.getInstance().initPlayers();
 
         ImageView gosht = findViewById(R.id.iv_g);
+        MediaPlayer music = MediaPlayer.create(this, R.raw.m);
+        music.start();
 
         gosht.setOnClickListener(new View.OnClickListener() {
             @Override

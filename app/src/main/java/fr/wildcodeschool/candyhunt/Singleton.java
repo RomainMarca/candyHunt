@@ -20,7 +20,6 @@ class Singleton {
     private int index;
 
 
-
     private Singleton() {
 
         index = 0;
@@ -126,11 +125,10 @@ class Singleton {
         Player player2 = new Player(0, "player2");
         players.add(player1);
         players.add(player2);
-
     }
 
-
     public void initRounds(int nbRounds, Context context) {
+        mRounds.clear();
 
         for (int i = 0; i <= nbRounds; i++) {
             int dificulty = levelDificulty(i);
@@ -180,6 +178,4 @@ class Singleton {
             return timeDuration2;
         }
     }
-
-
 }

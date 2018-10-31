@@ -39,6 +39,10 @@ public class Player {
         this.playerId = playerId;
     }
 
+    public void addScore(int moreScore) {
+        score += moreScore;
+    }
+
     //TODO Ajouter un dispositif Firebase pour stocker de manière définitive le score des joueurs? (facultatif)
 
 

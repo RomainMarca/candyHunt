@@ -236,25 +236,22 @@ public class Round {
     }
 
     public void defeat() {
-        //TODO Il se passe des trucs ici
         Intent gotoDead = new Intent(context, DeadActivity.class);
-        context.startActivity(gotoDead);
         Singleton.getInstance().setIndex(0);
+        if(Singleton.getInstance().getPlayers().get(0).getScore() >
+                Singleton.getInstance().getPlayers().get(0).getBestScore()) {
+            Singleton.getInstance().getPlayers().get(0)
+                    .setBestScore(Singleton.getInstance().getPlayers().get(0).getScore());
+        }
+        context.startActivity(gotoDead);
     }
 
     public void success() {
         Toast.makeText(context, "BRAVO", Toast.LENGTH_SHORT).show();
         Singleton.getInstance().setIndex(+1);
+        Singleton.getInstance().getPlayers().get(0).addScore(scoreGain);
         Activity arenaActivity = (Activity) context;
         arenaActivity.recreate();
     }
-
-    /*public void reLaunchRound() {
-        //Todo relancer <round +1>
-        countDownTimer.clear;
-    }*/
-
-    //TODO Affichage de la target
-
 
 }

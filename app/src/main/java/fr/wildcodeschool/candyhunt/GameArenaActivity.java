@@ -22,4 +22,9 @@ public class GameArenaActivity extends AppCompatActivity{
         dieHard.launchGame();
 
     }
+
+    @Override
+    public void onBackPressed() {
+        //Polymorphisme. Vide la méthode onBackPressed pour empêcher son utilisation pendant la partie
+    }
 }

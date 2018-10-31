@@ -11,8 +11,9 @@ public class DeadActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dead);
 
-
         TextView score = findViewById(R.id.score);
         score.setText("Votre score :" + Singleton.getInstance().getIndex());
+
+
     }
 }

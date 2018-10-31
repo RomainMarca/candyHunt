@@ -59,4 +59,14 @@
         app:layout_constraintEnd_toEndOf="@+id/rules"
         app:layout_constraintStart_toStartOf="@+id/rules" />
 
+    <TextView
+        android:id="@+id/best_score"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:textSize="20sp"
+        app:layout_constraintTop_toBottomOf="@+id/score"
+        app:layout_constraintEnd_toEndOf="@+id/rules"
+        app:layout_constraintStart_toStartOf="@+id/rules" />
+
 </android.support.constraint.ConstraintLayout>

@@ -18,20 +18,19 @@ public class SplashScreenActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
 
-        TextView titleApp = findViewById(R.id.title);
-        titleApp.setText(R.string.title);
 
         ImageView logoApp = findViewById(R.id.logo);
-        logoApp.setImageResource(R.drawable.citrouille);
+        ImageView buttonStart = findViewById(R.id.start);
 
-        int SPLASH_TIME_OUT = 2000;
-        new Handler().postDelayed(new Runnable() {
+        buttonStart.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void run() {
-                Intent intent = new Intent(SplashScreenActivity.this,MainActivity.class);
-                startActivity(intent);
-
+            public void onClick(View v) {
+                Intent map = new Intent(SplashScreenActivity.this, MainActivity.class);
+                startActivity(map);
             }
-        }, SPLASH_TIME_OUT);
+        });
+
+
+
     }
 }

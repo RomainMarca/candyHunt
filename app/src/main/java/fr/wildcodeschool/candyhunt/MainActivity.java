@@ -23,8 +23,8 @@ public class MainActivity extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent goToArena = new Intent(MainActivity.this , GameArenaActivity.class);
-                MainActivity.this.startActivity(goToArena);
+                Intent goToRules = new Intent(MainActivity.this , RulesActivity.class);
+                MainActivity.this.startActivity(goToRules);
             }
         });
 

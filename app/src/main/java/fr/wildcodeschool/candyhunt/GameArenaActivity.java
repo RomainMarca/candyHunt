@@ -19,28 +19,26 @@ public class GameArenaActivity extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.game_arena_activity);
 
-        final TextView rules = findViewById(R.id.rules);
-        final TextView close = findViewById(R.id.close);
-
         ArrayList<Player> players = new ArrayList<>();
         Player player = new Player(0,"player_one");
         players.add(player);
 
 
         GameDieHard dieHard = new GameDieHard(false,1,players,50, this);
-        dieHard.LaunchGame(rules, close);
+        dieHard.LaunchGame();
 
         /*CountdownView countDownTimer = findViewById(R.id.countdown);
         countDownTimer.start(timeDuration);*/
 
         //TODO DEBUG TO DELETE DEBUT
 
-        Candie candieTargetTest = Singleton.getInstance().getAllCandiesStock().get(0);
-        Round round = new Round(30000, 10, candieTargetTest, 2, GameArenaActivity.this);
+
+        /*Candie candieTargetTest = Singleton.getInstance().getAllCandiesStock().get(0);
+        Round round = new Round(6000, 10, candieTargetTest, 2, GameArenaActivity.this);
         round.generateCandies();
         ArrayList<Candie> candiesToInstantiate = Singleton.getInstance().getAllCandiesStock();
-        round.instantiateCandiesInGameArena(candiesToInstantiate);
-        round.launchTimer();
+        round.instantiateCandiesInGameArena(candiesToInstantiate);*/
+
 
         //TODO DEBUG TO DELETE FIN
 

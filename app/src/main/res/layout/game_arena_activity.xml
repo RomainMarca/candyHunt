@@ -7,7 +7,7 @@
     android:background="@drawable/backgroundfirstgame">
 
 
-    <RelativeLayout
+    <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/header"
         android:layout_width="0dp"
         android:layout_height="0dp"
@@ -19,7 +19,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0">
 
-        <cn.iwgang.countdownview.CountdownView
+        <!--<cn.iwgang.countdownview.CountdownView
             android:id="@+id/countdown"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -50,21 +50,39 @@
             app:timeBgDivisionLineSize="1dp"
             app:timeBgSize="50dp"
             app:timeTextColor="#000"
-            tools:ignore="NotSibling" />
+            tools:ignore="NotSibling" />-->
+
+        <TextView
+            android:id="@+id/timer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="24dp"
+            android:textColor ="#FFFFFF"
+            android:textSize="40dp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
 
         <ImageView
             android:id="@+id/iv_skull"
-            android:layout_width="wrap_content"
+            android:layout_width="159dp"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
             android:layout_alignParentBottom="true"
-            android:layout_toEndOf="@+id/countdown"
-            android:layout_toRightOf="@+id/countdown"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/skull" />
 
-    </RelativeLayout>
+    </android.support.constraint.ConstraintLayout>
 
     <android.support.constraint.Guideline
         android:id="@+id/guideline"
@@ -129,15 +147,6 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintGuide_begin="20dp" />
-
-    <!--<RelativeLayout
-        android:id="@+id/arena"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/header" />-->
 
     <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"

@@ -13,6 +13,8 @@ class Singleton {
     private ArrayList<Candie> allCandiesStock = new ArrayList<>();
     private ArrayList<Candie> candiesLevel1 = new ArrayList<>();
     private ArrayList<Candie> candiesLevel2 = new ArrayList<>();
+    private int index;
+    private int indexList;
 
     private Singleton() {
     }
@@ -22,6 +24,22 @@ class Singleton {
     }
 
     /*Getters and Setters*/
+
+    public int getIndexList() {
+        return indexList;
+    }
+
+    public void setIndexList(int indexList) {
+        this.indexList = indexList;
+    }
+
+    public int getIndex() {
+        return index;
+    }
+
+    public void setIndex(int index) {
+        this.index = index;
+    }
 
     public ArrayList<Candie> getAllCandiesStock() {
         return allCandiesStock;

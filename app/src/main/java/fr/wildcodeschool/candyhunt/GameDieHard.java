@@ -1,5 +1,6 @@
 package fr.wildcodeschool.candyhunt;
 
+import android.app.Activity;
 import android.content.Context;
 import android.view.View;
 import android.widget.TextView;
@@ -14,6 +15,8 @@ public class GameDieHard {
     int nbRounds;
     ArrayList<Round> mRounds = new ArrayList<>();
     Context context;
+    int mIndexL = Singleton.getInstance().getIndexList();
+
 
     /*CONSTRUCTOR*/
     public GameDieHard(boolean timer, int nbPlayers, ArrayList<Player> players, int nbRounds, Context context) {
@@ -67,7 +70,8 @@ public class GameDieHard {
                 rules.setVisibility(View.INVISIBLE);
                 close.setVisibility(View.INVISIBLE);
 
-                initRounds(nbRounds);
+                initRounds();
+                mRounds.get(Singleton.getInstance().getIndex());
             }
         });
     }
@@ -76,10 +80,11 @@ public class GameDieHard {
         //TODO clear la liste des candies en cour
     }
 
-    public void initRounds(int nbRounds) {
-        for (int i = 1; i <= nbRounds; i++) {
-            int dificulty = levelDificulty(i);
-            int nbCandy = numberCandy(i);
+    public void initRounds() {
+
+        for (mIndexL = 1; mIndexL <= nbRounds; mIndexL++) {
+            int dificulty = levelDificulty(mIndexL);
+            int nbCandy = numberCandy(mIndexL);
             float duration = timeDurationRound(dificulty,5000, 4000, 3000);
             Candie target = PickRandomTarget(Singleton.getInstance().getAllCandiesStock());
             Round round = new Round(duration, nbCandy, target, dificulty, context);
@@ -95,10 +100,10 @@ public class GameDieHard {
         return candies.get(candieIndex);
     }
 
-    public int levelDificulty(int i) {
-        if (i < 10) {
+    public int levelDificulty(int mIndexL) {
+        if (mIndexL < 10) {
             return 0;
-        } else if (i > 10 && i < 20){
+        } else if (mIndexL > 10 && mIndexL < 20){
             return 1;
         } else {
             return 2;

@@ -181,7 +181,7 @@ public class Round {
                     if(candie.getCandieResourceId() == localCandieTarget.getCandieResourceId() ) {
                         //TODO Success
                         Toast.makeText(context, "BRAVO", Toast.LENGTH_SHORT).show();
-                        GameArenaActivity.recreat();
+                        //GameArenaActivity.recreat();
                         Singleton.getInstance().setIndex(+1);
                         Singleton.getInstance().setIndexList(+1);
 

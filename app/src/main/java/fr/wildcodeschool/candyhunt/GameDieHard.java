@@ -63,26 +63,15 @@ public class GameDieHard {
     //TODO méthode InitiateNewRound
     //TODO méthode InitiateAllRounds
 
-    public void LaunchGame(final TextView rules, final TextView close) {
-        close.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                rules.setVisibility(View.INVISIBLE);
-                close.setVisibility(View.INVISIBLE);
+    public void LaunchGame() {
 
+                //mRounds.get(Singleton.getInstance().getIndex());
                 initRounds();
-                mRounds.get(Singleton.getInstance().getIndex());
-            }
-        });
-    }
-
-    public void endRound() {
-        //TODO clear la liste des candies en cour
     }
 
     public void initRounds() {
 
-        for (mIndexL = 1; mIndexL <= nbRounds; mIndexL++) {
+        for (mIndexL = 0; mIndexL <= nbRounds; mIndexL++) {
             int dificulty = levelDificulty(mIndexL);
             int nbCandy = numberCandy(mIndexL);
             float duration = timeDurationRound(dificulty,5000, 4000, 3000);
@@ -110,8 +99,8 @@ public class GameDieHard {
         }
     }
 
-    public int numberCandy(int i) {
-        return i+3;
+    public int numberCandy(int mIndexL) {
+        return mIndexL+3;
     }
 
     public float timeDurationRound(int dificulty, float timeDuration0, float timeDuration1, float timeDuration2) {

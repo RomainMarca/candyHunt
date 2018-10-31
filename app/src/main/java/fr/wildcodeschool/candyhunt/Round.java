@@ -10,12 +10,8 @@ import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
-
 import java.util.ArrayList;
 import java.util.Random;
-
-import cn.iwgang.countdownview.CountdownView;
 
 public class Round {
 
@@ -26,18 +22,19 @@ public class Round {
     ArrayList<Candie> candiesStock = new ArrayList<>();
     ArrayList<Candie> candiesToInstantiate = new ArrayList<>();
     Context context;
-    //CountdownView countDownTimer;
-
+    int scoreGain;
+    CountDownTimer timer;
     final static int MIN = 2;
     final static int MAX = 98;
 
     /*CONSTRUCTOR*/
-    public Round(float timerDuration, int nbCandies, Candie candieTarget, int candiesDifficulty, Context context) {
+    public Round(float timerDuration, int nbCandies, Candie candieTarget, int candiesDifficulty, Context context, int scoreGain) {
         this.timerDuration = timerDuration;
         this.nbCandies = nbCandies;
         this.candieTarget = candieTarget;
         this.candiesDifficulty = candiesDifficulty;
         this.context = context;
+        this.scoreGain = scoreGain;
 
         if(candiesDifficulty == 0) {
             this.candiesStock = Singleton.getInstance().getCandiesLevel1();
@@ -49,6 +46,14 @@ public class Round {
     }
 
     /*GETTERS AND SETTERS*/
+
+    public int getScoreGain() {
+        return scoreGain;
+    }
+
+    public void setScoreGain(int scoreGain) {
+        this.scoreGain = scoreGain;
+    }
 
     public ArrayList<Candie> getCandiesToInstantiate() {
         return candiesToInstantiate;
@@ -97,21 +102,6 @@ public class Round {
     public void setNbCandies(int nbCandies) {
         this.nbCandies = nbCandies;
     }
-
-    //TODO Méthode pour gérer le Timer
-    //TODO Success (Méthode classique, ou bien mettre en place un listener?)
-    //TODO defeat (pareil. Méthode classique, ou bien mettre en place un listener ?)
-    //TODO Méthode CLEAR. Delete tous les bonbons et finish le round
-    //TODO Méthode WinRound. Animation victoire + incremente le compteur de vicoire et relance un nouveau round
-    //TODO Méthode LoseRound. Animation defaite + stop le compteur de vicoire et arrete le jeu.
-    //TODO Méthode pickARandomTargetCandie
-    //TODO Méthode initiateTousLesBonbons (+ pimper cette méthode pour ajuster la difficulté?).
-    //TODO Méthode generateRandomPosition
-    //TODO (facultatif or not?) Créer une méthode qui stocke tout un tas de bonbons randoms
-    //TODO Méthode : Générer randomly une position verticale + une position horizontale (nouvelle à chaque fois)
-    //TODO Méthode : Affichage des bonbons
-    //TODO Méthode : clear
-    //TODO Méthode : Lancer Round (1 : Clear 2 : Affichage des bonbons)
 
     public void generateCandies() {
 
@@ -225,34 +215,43 @@ public class Round {
         View rootView = ((Activity)context).getWindow().getDecorView().findViewById(android.R.id.content);
         final TextView mTextField =  (TextView) rootView.findViewById(R.id.timer);
 
-        new CountDownTimer((long) timerDuration, 1000) {
+        timer = new CountDownTimer((long) timerDuration, 1000) {
 
             public void onTick(long millisUntilFinished) {
                 mTextField.setText(millisUntilFinished / 1000 + " s.");
-                //here you can have your logic to set text to edittext
             }
 
             public void onFinish() {
-                mTextField.setText("Perdu !");
                 defeat();
             }
         }.start();
     }
 
     public void defeat() {
-        //TODO Il se passe des trucs ici
+        Activity arena = (Activity) context;
         Intent gotoDead = new Intent(context, DeadActivity.class);
-        context.startActivity(gotoDead);
         Singleton.getInstance().setIndex(0);
+        timer.cancel();
+
+        if(Singleton.getInstance().getPlayers().get(0).getScore() >
+                Singleton.getInstance().getPlayers().get(0).getBestScore()) {
+            Singleton.getInstance().getPlayers().get(0)
+                    .setBestScore(Singleton.getInstance().getPlayers().get(0).getScore());
+        }
+
+        context.startActivity(gotoDead);
+        arena.finish();
     }
 
     public void success() {
-        Toast.makeText(context, "BRAVO", Toast.LENGTH_SHORT).show();
         Singleton.getInstance().setIndex(+1);
+        Singleton.getInstance().getPlayers().get(0).addScore(scoreGain);
         Activity arenaActivity = (Activity) context;
+        timer.cancel();
         arenaActivity.recreate();
     }
-    public void imageTargetCandie() {
+
+    public void imageTargetCandie(){
         View rootView = ((Activity)context).getWindow().getDecorView().findViewById(android.R.id.content);
         ImageView targetImage = (ImageView) rootView.findViewById(R.id.target);
         ConstraintLayout.LayoutParams params = (ConstraintLayout.LayoutParams) targetImage.getLayoutParams();
@@ -260,10 +259,5 @@ public class Round {
         targetImage.setImageResource(candieTarget.getCandieResourceId());
 
         }
-
-    /*public void reLaunchRound() {
-        //Todo relancer <round +1>
-        countDownTimer.clear;
-    }*/
 
 }

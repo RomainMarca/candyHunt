@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -61,24 +62,16 @@ public class GameDieHard {
     //TODO méthode InitiateNewRound
     //TODO méthode InitiateAllRounds
 
-    public void LaunchGame() {
+    public void launchGame() {
+
+        Toast.makeText(context, "Nouvelle partie", Toast.LENGTH_SHORT).show();
 
                 if (Singleton.getInstance().getIndex() == 0) {
+                    Toast.makeText(context, "Nouvelle liste", Toast.LENGTH_SHORT).show();
                     Singleton.getInstance().initRounds(nbRounds, context);
                 }
 
                 Singleton.getInstance().getmRounds().get(Singleton.getInstance().getIndex()).launchRound();
     }
 
-
-
-    /*public void onResult() {
-        if (click == target) {
-            Player.counter +1
-            reLaunchRound(+1);
-        } else {
-            Player.counter(view);
-            intent mainActivity;
-        }
-    }*/
 }

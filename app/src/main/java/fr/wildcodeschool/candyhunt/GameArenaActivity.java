@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -18,26 +19,13 @@ public class GameArenaActivity extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.game_arena_activity);
 
-        /*ArrayList<Player> players = new ArrayList<>();
-        Player player = new Player(0,"player_one");
-        players.add(player);*/
-
-
         GameDieHard dieHard = new GameDieHard(false,1,Singleton.getInstance().getPlayers(),50, this);
-        dieHard.LaunchGame();
+        dieHard.launchGame();
+        Toast.makeText(getApplicationContext(), "Création Arène", Toast.LENGTH_SHORT).show();
+    }
 
-
-        //TODO DEBUG TO DELETE DEBUT
-
-
-        /*Candie candieTargetTest = Singleton.getInstance().getAllCandiesStock().get(0);
-        Round round = new Round(6000, 10, candieTargetTest, 2, GameArenaActivity.this);
-        round.generateCandies();
-        ArrayList<Candie> candiesToInstantiate = Singleton.getInstance().getAllCandiesStock();
-        round.instantiateCandiesInGameArena(candiesToInstantiate);*/
-
-
-        //TODO DEBUG TO DELETE FIN
-
+    @Override
+    public void onBackPressed() {
+        //Polymorphisme. Vide la méthode onBackPressed pour empêcher son utilisation pendant la partie
     }
 }

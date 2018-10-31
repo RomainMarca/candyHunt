@@ -33,7 +33,6 @@ public class Candie {
 
     /*GETTERS AND SETTERS*/
 
-
     public int getCandieResourceId() {
         return candieResourceId;
     }

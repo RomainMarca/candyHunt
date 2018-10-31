@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 public class RulesActivity extends AppCompatActivity {
@@ -13,7 +14,7 @@ public class RulesActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_rules);
 
-        TextView intent = findViewById(R.id.rules);
+        ImageView intent = findViewById(R.id.rules);
         intent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

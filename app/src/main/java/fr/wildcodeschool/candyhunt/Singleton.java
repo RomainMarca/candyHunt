@@ -20,7 +20,6 @@ class Singleton {
     private int index;
 
 
-
     private Singleton() {
 
         index = 0;
@@ -126,20 +125,26 @@ class Singleton {
         Player player2 = new Player(0, "player2");
         players.add(player1);
         players.add(player2);
-
     }
 
-
     public void initRounds(int nbRounds, Context context) {
+        mRounds.clear();
 
         for (int i = 0; i <= nbRounds; i++) {
             int dificulty = levelDificulty(i);
             int nbCandy = numberCandy(i);
-            float duration = timeDurationRound(dificulty,6000, 5000, 4000);
+            int scoreGain = adjustScoreGain(i);
+            float duration = timeDurationRound(dificulty,5000, 4000, 3000);
             Candie target = PickRandomTarget(Singleton.getInstance().getAllCandiesStock());
-            Round round = new Round(duration, nbCandy, target, dificulty, context);
+            Round round = new Round(duration, nbCandy, target, dificulty, context, scoreGain);
             mRounds.add(round);
         }
+    }
+
+    public int adjustScoreGain(int i) {
+        int score;
+        score = (i*5)+i;
+        return score;
     }
 
     public Candie PickRandomTarget(ArrayList<Candie> candies){
@@ -173,6 +178,4 @@ class Singleton {
             return timeDuration2;
         }
     }
-
-
 }

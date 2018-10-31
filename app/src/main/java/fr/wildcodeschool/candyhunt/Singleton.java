@@ -2,6 +2,7 @@ package fr.wildcodeschool.candyhunt;
 
 
 import android.content.Context;
+import android.widget.Toast;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
@@ -131,13 +132,23 @@ class Singleton {
 
 
     public void initRounds(int nbRounds, Context context) {
+        mRounds.clear();
 
         for (int i = 0; i <= nbRounds; i++) {
             int dificulty = levelDificulty(i);
             int nbCandy = numberCandy(i);
             int scoreGain = adjustScoreGain(i);
             float duration = timeDurationRound(dificulty,5000, 4000, 3000);
-            Candie target = PickRandomTarget(Singleton.getInstance().getAllCandiesStock());
+            Candie target;
+
+            if(dificulty == 0) {
+                target = PickRandomTarget(candiesLevel1);
+            } else if (dificulty == 1) {
+                target = PickRandomTarget(candiesLevel2);
+            } else {
+                target = PickRandomTarget(allCandiesStock);
+            }
+
             Round round = new Round(duration, nbCandy, target, dificulty, context, scoreGain);
             mRounds.add(round);
         }
@@ -153,14 +164,13 @@ class Singleton {
         int possibleIndex =  candies.size()-1;
         Random random = new Random();
         int candieIndex = random.nextInt(possibleIndex + 1 - 0) + 0;
-
         return candies.get(candieIndex);
     }
 
     public int levelDificulty(int i) {
         if (i < 10) {
             return 0;
-        } else if (i > 10 && i < 20){
+        } else if (i >= 10 && i < 20){
             return 1;
         } else {
             return 2;
@@ -181,5 +191,8 @@ class Singleton {
         }
     }
 
+    public void incrementIndex(int value) {
+        this.index += value;
+    }
 
 }

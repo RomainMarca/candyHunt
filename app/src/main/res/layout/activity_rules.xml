@@ -8,18 +8,15 @@
     tools:context=".RulesActivity">
 
 
-    <TextView
+    <ImageView
         android:id="@+id/rules"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
+        android:layout_marginLeft="20dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
+        android:layout_marginRight="20dp"
         android:background="@drawable/rip"
-        android:gravity="center"
-        android:text="Les regles du jeu sont ..."
-        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.504"
@@ -32,5 +29,27 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintGuide_begin="176dp" />
+
+    <TextView
+        android:id="@+id/tv_rule"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="8dp"
+        android:textColor="#000"
+        android:gravity="center"
+        android:paddingLeft="65dp"
+        android:paddingRight="75dp"
+        android:text="@string/cliquez_sur_le_bonbon_indiqu_en_haut_de_l_cran_dans_le_temps_imparti_atteignez_le_niveau_maximum_pour_gagner_un_bonbon"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.65999997" />
 
 </android.support.constraint.ConstraintLayout>

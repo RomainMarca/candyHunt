@@ -1,4 +1,6 @@
 <resources>
     <string name="app_name">candyHunt</string>
     <string name="title">Candy Hunt</string>
+    <string name="txt_menu">Cliquez sur un personnage pour participer à un mini jeu et gagner des bonbons</string>
+    <string name="cliquez_sur_le_bonbon_indiqu_en_haut_de_l_cran_dans_le_temps_imparti_atteignez_le_niveau_maximum_pour_gagner_un_bonbon">Cliquez sur le bonbon indiqué en haut de l\'écran dans le temps imparti. Atteignez le niveau maximum pour gagner un bonbon</string>
 </resources>

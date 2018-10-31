@@ -19,8 +19,8 @@ public class DeadActivity extends AppCompatActivity {
         TextView bestScore = findViewById(R.id.best_score);
         Button buttonAgain = findViewById(R.id.button_again);
 
-        score.setText("Votre score :" + Singleton.getInstance().getIndex());
-        bestScore.setText("Meilleur score :" + Singleton.getInstance().getIndex());
+        score.setText("Votre score :" + Singleton.getInstance().getScore());
+        bestScore.setText("Meilleur score :" + Singleton.getInstance().getBestscore());
 
         buttonAgain.setOnClickListener(new View.OnClickListener() {
             @Override

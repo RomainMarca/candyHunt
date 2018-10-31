@@ -19,12 +19,14 @@ class Singleton {
     private ArrayList<Candie> candiesLevel2 = new ArrayList<>();
     private ArrayList<Round> mRounds = new ArrayList<>();
     private int index;
-
+    private int score;
+    private int bestscore;
 
 
     private Singleton() {
 
         index = 0;
+        score = 0;
     }
 
     static Singleton getInstance() {
@@ -32,6 +34,22 @@ class Singleton {
     }
 
     /*Getters and Setters*/
+
+    public int getBestscore() {
+        return bestscore;
+    }
+
+    public void setBestscore(int bestscore) {
+        this.bestscore = bestscore;
+    }
+
+    public int getScore() {
+        return score;
+    }
+
+    public void setScore(int score) {
+        this.score = score;
+    }
 
     public ArrayList<Round> getmRounds() {
         return mRounds;
@@ -127,9 +145,7 @@ class Singleton {
         Player player2 = new Player(0, "player2");
         players.add(player1);
         players.add(player2);
-
     }
-
 
     public void initRounds(int nbRounds, Context context) {
         mRounds.clear();

@@ -82,7 +82,7 @@ public class GameDieHard {
             int nbCandy = numberCandy(i);
             float duration = timeDurationRound(dificulty,5000, 4000, 3000);
             Candie target = PickRandomTarget(Singleton.getInstance().getAllCandiesStock());
-            Round round = new Round(duration, nbCandy, target, dificulty);
+            Round round = new Round(duration, nbCandy, target, dificulty, context);
             mRounds.add(round);
         }
     }

@@ -84,10 +84,25 @@ class Singleton {
         }
     }
 
+    public Candie getCandieById(int candieId) {
+        ArrayList<Candie> candies = Singleton.getInstance().getAllCandiesStock();
+        for (Candie candie : candies) {
+            if (candie.getCandieResourceId() == candieId) {
+                return candie;
+            }
+        }
+        //If none target candie encountered
+        Candie candie = Singleton.getInstance().getAllCandiesStock().get(0);
+        return candie;
+    }
+
     public void initPlayers() {
         Player player1 = new Player(0, "player1");
         Player player2 = new Player(0, "player2");
         players.add(player1);
         players.add(player2);
+
     }
+
+
 }

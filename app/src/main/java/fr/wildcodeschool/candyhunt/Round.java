@@ -1,6 +1,13 @@
 package fr.wildcodeschool.candyhunt;
 
+import android.app.Activity;
+import android.content.Context;
+import android.support.constraint.ConstraintLayout;
+import android.support.constraint.ConstraintSet;
+import android.util.DisplayMetrics;
+import android.view.View;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -11,23 +18,42 @@ public class Round {
 
     float timerDuration;
     int nbCandies;
-    //String candieTargetId;
     Candie candieTarget;
     int candiesDifficulty; //Correspond à la difficulté des bonbons sélectionnés pour ce round
     ArrayList<Candie> candiesStock = new ArrayList<>();
+    ArrayList<Candie> candiesToInstantiate = new ArrayList<>();
+    Context context;
 
     final static int MIN = 2;
     final static int MAX = 98;
+    //final static float CANDIES_DIMENSIONS = 100;
 
     /*CONSTRUCTOR*/
-    public Round(float timerDuration, int nbCandies, Candie candieTarget, int candiesDifficulty) {
+    public Round(float timerDuration, int nbCandies, Candie candieTarget, int candiesDifficulty, Context context) {
         this.timerDuration = timerDuration;
         this.nbCandies = nbCandies;
         this.candieTarget = candieTarget;
         this.candiesDifficulty = candiesDifficulty;
+        this.context = context;
+
+        if(candiesDifficulty == 0) {
+            this.candiesStock = Singleton.getInstance().getCandiesLevel1();
+        } else if (candiesDifficulty == 1 ) {
+            this.candiesStock = Singleton.getInstance().getCandiesLevel2();
+        } else {
+            this.candiesStock = Singleton.getInstance().getAllCandiesStock();
+        }
     }
 
     /*GETTERS AND SETTERS*/
+
+    public ArrayList<Candie> getCandiesToInstantiate() {
+        return candiesToInstantiate;
+    }
+
+    public void setCandiesToInstantiate(ArrayList<Candie> candiesToInstantiate) {
+        this.candiesToInstantiate = candiesToInstantiate;
+    }
 
     public int getCandiesDifficulty() {
         return candiesDifficulty;
@@ -85,12 +111,82 @@ public class Round {
     //TODO Méthode : clear
     //TODO Méthode : Lancer Round (1 : Clear 2 : Affichage des bonbons)
 
+    public void generateCandies() {
+
+        this.candieTarget.setHorizontalLocation(generateRandomInteger(4, 96));
+        this.candieTarget.setVerticalLocation(generateRandomInteger(4, 96));
+        this.candiesToInstantiate.add(this.candieTarget);
+        Candie newCandie;
+
+        for(int i = 0 ; i < this.nbCandies - 1 ; i ++) {
+            do {
+                newCandie = generateACandie();
+            } while (newCandie.getCandieResourceId() == candieTarget.getCandieResourceId() || positionIsAlreadyUsed(this.candiesToInstantiate, newCandie));
+        this.candiesToInstantiate.add(generateACandie());
+        }
+    }
+
+    public boolean positionIsAlreadyUsed(ArrayList<Candie> candiesToCheck, Candie newCandie) {
+
+        for(Candie candieToCheck : candiesToCheck) {
+
+            boolean xIsTooClose = Math.abs(candieToCheck.getHorizontalLocation()-newCandie.getHorizontalLocation()) < 20;
+            boolean yIsTooClose = Math.abs(candieToCheck.getVerticalLocation()-newCandie.getVerticalLocation()) < 20;
+            float distanceFromX = Math.abs(candieToCheck.getHorizontalLocation()-newCandie.getHorizontalLocation());
+            float distanceFromY = Math.abs(candieToCheck.getVerticalLocation()-newCandie.getVerticalLocation());
+            int distanceFromXint = (int) distanceFromX;
+            int distanceFromYint = (int) distanceFromY;
+            Toast.makeText(context, "x is too close : " + xIsTooClose + "   y is too close : " + yIsTooClose , Toast.LENGTH_SHORT).show();
+
+            if(xIsTooClose && yIsTooClose) {
+                //Toast.makeText(context, "true", Toast.LENGTH_SHORT).show();
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public void instantiateCandiesInGameArena(ArrayList<Candie> candiesToInstantiate) {
+
+        View rootView = ((Activity)context).getWindow().getDecorView().findViewById(android.R.id.content);
+        ConstraintLayout arena =  (ConstraintLayout) rootView.findViewById(R.id.arena);
+
+        for(Candie candie : candiesToInstantiate) {
+
+            ImageView newCandie = new ImageView(context);
+            newCandie.setImageResource(candie.getCandieResourceId());
+            ConstraintLayout.LayoutParams lp = new ConstraintLayout.LayoutParams (convertDpToPixel(candie.getCandieDimension()), convertDpToPixel(candie.getCandieDimension()));
+
+            newCandie.setLayoutParams(lp);
+            arena.addView(newCandie);
+            newCandie.setId(candie.getCandieResourceId());
+
+            ConstraintSet cs = new ConstraintSet();
+            cs.clone(arena);
+            cs.connect(newCandie.getId(), ConstraintSet.RIGHT, ConstraintSet.PARENT_ID, ConstraintSet.RIGHT, 0);
+            cs.connect(newCandie.getId(), ConstraintSet.LEFT, ConstraintSet.PARENT_ID, ConstraintSet.LEFT, 0);
+            cs.connect(newCandie.getId(), ConstraintSet.TOP, ConstraintSet.PARENT_ID, ConstraintSet.TOP, 0);
+            cs.connect(newCandie.getId(), ConstraintSet.BOTTOM, ConstraintSet.PARENT_ID, ConstraintSet.BOTTOM, 0);
+
+            cs.setHorizontalBias(newCandie.getId(), candie.getHorizontalLocation()/100);
+            cs.setVerticalBias(newCandie.getId(), candie.getVerticalLocation()/100);
+            cs.applyTo(arena);
+
+        }
+
+    }
+
+    public int convertDpToPixel(float dp) {
+        DisplayMetrics metrics = context.getResources().getDisplayMetrics();
+        float px = dp * (metrics.densityDpi / DisplayMetrics.DENSITY_DEFAULT);
+        return (int) px;
+    }
 
     public Candie generateACandie() {
 
-        int maxIndexCandieToPick = candiesStock.size()-1;
-        int indexCandieToPick = generateRandomInteger(0, maxIndexCandieToPick);
-        Candie myNewCandie = candiesStock.get(indexCandieToPick);
+        int maxIndexCandieToPick = this.candiesStock.size()-1;
+        int indexCandieToPick = generateRandomInteger(0, maxIndexCandieToPick); //TODO Rajouter ici une vérification (pas de position double). Une méthode basique et une boucle while feront l'affaire
+        Candie myNewCandie = this.candiesStock.get(indexCandieToPick);
         myNewCandie.setHorizontalLocation(generateRandomInteger(0, 100));
         myNewCandie.setVerticalLocation(generateRandomInteger(0, 100));
 

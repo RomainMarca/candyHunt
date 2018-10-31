@@ -3,6 +3,7 @@ package fr.wildcodeschool.candyhunt;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.CountDownTimer;
 import android.support.constraint.ConstraintLayout;
 import android.support.constraint.ConstraintSet;
@@ -226,6 +227,8 @@ public class Round {
     }
 
     public void defeat() {
+        MediaPlayer music = MediaPlayer.create( context, R.raw.whoo);
+        music.start();
         Activity arena = (Activity) context;
         Intent gotoDead = new Intent(context, DeadActivity.class);
         Singleton.getInstance().setScore(Singleton.getInstance().getIndex());
@@ -254,6 +257,8 @@ public class Round {
     }
 
     public void success() {
+        MediaPlayer music = MediaPlayer.create( context, R.raw.bul);
+        music.start();
         Singleton.getInstance().incrementIndex(1);
         Singleton.getInstance().getPlayers().get(0).addScore(scoreGain);
         Activity arenaActivity = (Activity) context;

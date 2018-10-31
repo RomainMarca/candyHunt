@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">candyHunt</string>
+    <string name="title">Candy Hunt</string>
 </resources>

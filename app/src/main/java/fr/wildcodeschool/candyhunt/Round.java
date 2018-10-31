@@ -243,6 +243,12 @@ public class Round {
     public void defeat() {
         //TODO Il se passe des trucs ici
     }
+    public void imageTargetCandie(){
+        View rootView = ((Activity)context).getWindow().getDecorView().findViewById(android.R.id.content);
+        ImageView targetImage =  (ImageView) rootView.findViewById(R.id.target);
+        targetImage.setImageResource(candieTarget.getCandieResourceId());
+
+        }
 
     /*public void reLaunchRound() {
         //Todo relancer <round +1>

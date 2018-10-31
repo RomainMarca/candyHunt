@@ -51,6 +51,5 @@ public class DeadActivity extends AppCompatActivity {
     public void onBackPressed() {
         //Polymorphisme. Vide la méthode onBackPressed pour empêcher son utilisation pendant la partie
 
-
     }
 }

@@ -147,25 +147,26 @@ class Singleton {
         players.add(player2);
     }
 
-    public void initRounds(int nbRounds, Context context) {
+    public void initRounds(int nbRounds, Context context, int difficultyLevel) {
         mRounds.clear();
 
         for (int i = 0; i <= nbRounds; i++) {
-            int dificulty = levelDificulty(i);
             int nbCandy = numberCandy(i);
             int scoreGain = adjustScoreGain(i);
-            float duration = timeDurationRound(dificulty,5000, 4000, 3000);
             Candie target;
+            float duration = 0f;
 
-            if(dificulty == 0) {
+            if(difficultyLevel == 0) {
                 target = PickRandomTarget(candiesLevel1);
-            } else if (dificulty == 1) {
+                duration = timeDurationRound(difficultyLevel,7000, 6000, 5000);
+            } else if (difficultyLevel == 1) {
                 target = PickRandomTarget(candiesLevel2);
+                duration = timeDurationRound(difficultyLevel,5000, 4000, 3000);
             } else {
                 target = PickRandomTarget(allCandiesStock);
+                duration = timeDurationRound(difficultyLevel,4000, 3000, 2000);
             }
-
-            Round round = new Round(duration, nbCandy, target, dificulty, context, scoreGain);
+            Round round = new Round(duration, nbCandy, target, difficultyLevel, context, scoreGain);
             mRounds.add(round);
         }
     }
@@ -197,10 +198,10 @@ class Singleton {
         return i+3;
     }
 
-    public float timeDurationRound(int dificulty, float timeDuration0, float timeDuration1, float timeDuration2) {
-        if (dificulty == 0) {
+    public float timeDurationRound(int difficultyLevel, float timeDuration0, float timeDuration1, float timeDuration2) {
+        if (difficultyLevel == 0) {
             return timeDuration0;
-        } else if (dificulty == 1) {
+        } else if (difficultyLevel == 1) {
             return timeDuration1;
         } else {
             return timeDuration2;

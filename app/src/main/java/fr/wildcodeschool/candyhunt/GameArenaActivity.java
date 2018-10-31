@@ -19,7 +19,9 @@ public class GameArenaActivity extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.game_arena_activity);
 
-        GameDieHard dieHard = new GameDieHard(false,1,Singleton.getInstance().getPlayers(),50, this);
+        int difficultyLevel = 2;
+
+        GameDieHard dieHard = new GameDieHard(false,1,Singleton.getInstance().getPlayers(),50, this, difficultyLevel);
         dieHard.launchGame();
     }
 

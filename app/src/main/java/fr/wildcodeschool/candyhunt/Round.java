@@ -20,7 +20,7 @@ public class Round {
     float timerDuration;
     int nbCandies;
     Candie candieTarget;
-    int candiesDifficulty; //Correspond à la difficulté des bonbons sélectionnés pour ce round
+    //int candiesDifficulty; //Correspond à la difficulté des bonbons sélectionnés pour ce round
     ArrayList<Candie> candiesStock = new ArrayList<>();
     ArrayList<Candie> candiesToInstantiate = new ArrayList<>();
     Context context;
@@ -34,7 +34,6 @@ public class Round {
         this.timerDuration = timerDuration;
         this.nbCandies = nbCandies;
         this.candieTarget = candieTarget;
-        this.candiesDifficulty = candiesDifficulty;
         this.context = context;
         this.scoreGain = scoreGain;
 
@@ -63,14 +62,6 @@ public class Round {
 
     public void setCandiesToInstantiate(ArrayList<Candie> candiesToInstantiate) {
         this.candiesToInstantiate = candiesToInstantiate;
-    }
-
-    public int getCandiesDifficulty() {
-        return candiesDifficulty;
-    }
-
-    public void setCandiesDifficulty(int candiesDifficulty) {
-        this.candiesDifficulty = candiesDifficulty;
     }
 
     public ArrayList<Candie> getCandiesStock() {
@@ -263,7 +254,6 @@ public class Round {
         ConstraintLayout.LayoutParams params = (ConstraintLayout.LayoutParams) targetImage.getLayoutParams();
         params.width = 140;
         targetImage.setImageResource(candieTarget.getCandieResourceId());
-
         }
 
 }

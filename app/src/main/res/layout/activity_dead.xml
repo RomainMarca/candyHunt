@@ -35,6 +35,8 @@
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:textColor="#fff"
+        android:background="@drawable/cadre"
+        android:padding="15dp"
         android:text="Retour menu"
         android:textSize="35sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -53,8 +55,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
-        android:background="#FFF8DC"
+        android:background="@drawable/cadre"
         android:gravity="center"
+        android:padding="15dp"
         android:text="REJOUER"
         android:textColor="#8B0000"
         android:textSize="50sp"
@@ -63,7 +66,7 @@
         app:layout_constraintHorizontal_bias="0.46"
         app:layout_constraintStart_toStartOf="@+id/rules"
         app:layout_constraintTop_toTopOf="@+id/rules"
-        app:layout_constraintVertical_bias="0.36" />
+        app:layout_constraintVertical_bias="0.19" />
 
     <TextView
         android:id="@+id/score"

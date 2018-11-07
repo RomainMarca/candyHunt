@@ -12,6 +12,9 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.bumptech.glide.Glide;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Random;
@@ -271,6 +274,6 @@ public class Round {
         ImageView targetImage = (ImageView) rootView.findViewById(R.id.target);
         ConstraintLayout.LayoutParams params = (ConstraintLayout.LayoutParams) targetImage.getLayoutParams();
         params.width = 140;
-        targetImage.setImageResource(candieTarget.getCandieResourceId());
-        }
+        Glide.with(targetImage.getContext()).load(candieTarget.getCandieResourceId()).into(targetImage);
+    }
 }

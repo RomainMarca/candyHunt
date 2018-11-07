@@ -23,8 +23,6 @@ public class MainActivity extends AppCompatActivity {
         Singleton.getInstance().initPlayers();
 
         ImageView gosht = findViewById(R.id.iv_g);
-        MediaPlayer music = MediaPlayer.create(this, R.raw.m);
-        music.start();
         ImageView vamp = findViewById(R.id.iv_vamp);
         ImageView witch = findViewById(R.id.iv_witch);
 
